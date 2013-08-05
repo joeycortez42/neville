@@ -1,0 +1,24 @@
+/*!
+ * Neville v0.4
+ *
+ * Copyright 2013 Blossomers, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+*/
+
+.white { color:#FFF; }
+
+html,body { margin:0; padding:0; height:100%; /* needed for container min-height */ }
+body { min-height: 100%; position: relative; }
+
+#wrapper { position:relative; /* needed for footer positioning*/
+	margin:0 auto; /* center, not in IE5 */
+	height:auto !important; /* real browsers */
+	height:100%; /* IE6: treaded as min-height*/
+	min-height:100%; /* real browsers */
+}
+
+#wrapper.home { background:#86172a; padding-top: 45px; }
+.masthead h1 { font-size: 5em; }
+.masthead h4 { color: #e1b8bf; font-size: 1.5em; font-weight: 200; }

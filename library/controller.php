@@ -52,10 +52,10 @@
 				$this->data[basename($child)] = $this->getChild($child);
 			}
 			
-			if (file_exists(DIR_VIEW . $this->view)) {
+			if (file_exists(DIR_APP . 'application/views/' . $this->view)) {
 				extract($this->data);
 	      		ob_start();
-		  		require(DIR_VIEW . $this->view);
+		  		require(DIR_APP . 'application/views/' . $this->view);
 		  		$this->output = ob_get_contents();
 	      		ob_end_clean();
 	      		

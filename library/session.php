@@ -7,7 +7,8 @@
 				ini_set('session.use_cookies', 'On');
 				ini_set('session.use_trans_sid', 'Off');
 				
-				session_set_cookie_params(0, '/');
+				session_set_cookie_params(18000, HTTP_SERVER);
+				session_name(SESSION_NAME);
 				session_start();
 			}
 				

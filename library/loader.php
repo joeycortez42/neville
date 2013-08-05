@@ -15,7 +15,7 @@
 		}
 		
 		public function model($model) {
-			$file  = DIR_ROOT . 'model/' . $model . '.php';
+			$file  = DIR_APP . 'models/' . $model . '.php';
 			$class = 'Model' . preg_replace('/[^a-zA-Z0-9]/', '', $model);
 			
 			if (file_exists($file)) { 

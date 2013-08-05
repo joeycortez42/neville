@@ -10,7 +10,7 @@ Version
 Built Using
 -----------
 * Apache
-* PHP 5+
+* PHP 5.1.0
 * MySQL
 
 (Should work on other non-tested versions.)

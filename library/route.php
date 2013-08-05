@@ -12,14 +12,14 @@
 			foreach ($parts as $part) { 
 				$path .= $part;
 				
-				if (is_dir(DIR_ROOT . 'controller/' . $path)) {
+				if (is_dir(DIR_APP . 'application/controllers/' . $path)) {
 					$path .= '/';
 					array_shift($parts);
 					continue;
 				}
 				
-				if (is_file(DIR_ROOT . 'controller/' . str_replace(array('../', '..\\', '..'), '', $path) . '.php')) {
-					$this->file = DIR_ROOT . 'controller/' . str_replace(array('../', '..\\', '..'), '', $path) . '.php';
+				if (is_file(DIR_APP . 'application/controllers/' . str_replace(array('../', '..\\', '..'), '', $path) . '.php')) {
+					$this->file = DIR_APP . 'application/controllers/' . str_replace(array('../', '..\\', '..'), '', $path) . '.php';
 					$this->class = 'Controller' . preg_replace('/[^a-zA-Z0-9]/', '', $path);
 					array_shift($parts);
 					break;
