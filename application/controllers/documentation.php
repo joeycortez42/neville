@@ -1,7 +1,7 @@
 <?php  
-	class ControllerCommonHome extends Controller {
+	class ControllerDocumentation extends Controller {
 		public function index() {
-			$this->view = 'common/home.php';
+			$this->view = 'documentation.php';
 
 			$this->children = array(
 				'common/header',

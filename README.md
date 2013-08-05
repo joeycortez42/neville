@@ -1,11 +1,11 @@
 About Neville
 =============
 
-Neville PHP Framework is a lightweight PHP5 MCV Framework modeled after OpenCart. Current database connection supports only MySQL through MySQLi. Includes jQuery library.
+Neville is a lightweight PHP5 MVC Framework for building web applications.
 
 Version
 -------
-0.4 beta
+Beta 0.4
 
 Built Using
 -----------
@@ -13,9 +13,11 @@ Built Using
 * PHP 5.1.0
 * MySQL
 
-(Should work on other non-tested versions.)
+(Should work on other non-tested versions oh PHP and MySQL.)
 
 Features
 --------
 * User Authentication
 * User Roles
+* Includes jQuery
+* Includes Bootstrap

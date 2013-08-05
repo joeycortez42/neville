@@ -81,5 +81,9 @@
 	// Output
 	$response->output();
 	
-	print_r($_SESSION);
+	if ($_SESSION) {
+		echo '<div class="white">';
+		print_r($_SESSION);
+		echo '</div>';
+	}
 ?>

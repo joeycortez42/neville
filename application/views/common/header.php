@@ -10,8 +10,8 @@
 		<meta name="language" content="en-us" /> 
 		<!-- Bootstrap CSS -->
 		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<!-- jQuery) -->
-		<script src="http://code.jquery.com/jquery.js"></script>
+		<!-- jQuery Javascript -->
+		<script src="js/jquery.js"></script>
 		<!-- Bootstrap Javascript -->
 		<script src="js/bootstrap.min.js"></script>
 		<!-- Neville CSS -->

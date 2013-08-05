@@ -7,7 +7,9 @@
  *
 */
 
-.white { color:#FFF; }
+.white, .white a, .white a:hover { color:#FFF; }
+.lightred { color: #e2bdc2; }
+.darkred { color: #6b0514; }
 
 html,body { margin:0; padding:0; height:100%; /* needed for container min-height */ }
 body { min-height: 100%; position: relative; }
@@ -19,6 +21,19 @@ body { min-height: 100%; position: relative; }
 	min-height:100%; /* real browsers */
 }
 
-#wrapper.home { background:#86172a; padding-top: 45px; }
-.masthead h1 { font-size: 5em; }
-.masthead h4 { color: #e1b8bf; font-size: 1.5em; font-weight: 200; }
+#nav { margin-bottom: 0; background: #7b091a; }
+
+#wrapper.home { background: #7b091a; padding-top: 45px; }
+
+#masthead { margin-top: 100px; }
+#masthead h1 { font-size: 5.5em; }
+#masthead h4 { font-size: 1.8em; font-weight: 200; }
+
+#changes { margin: 50px 0; }
+
+#footer { margin-top: 50px; }
+
+/** Bootstrap Override **/
+.navbar-nav > li > a, .navbar-nav > li > a:hover { color: #e2bdc2; }
+
+.row { margin-right: 0; }
