@@ -9,7 +9,8 @@
 
 .white, .white a, .white a:hover { color:#FFF; }
 .lightred { color: #e2bdc2; }
-.darkred { color: #6b0514; }
+.darkred, .darkred a { color: #6b0514; }
+.grey, .grey a { color: #796b6d; }
 
 html,body { margin:0; padding:0; height:100%; /* needed for container min-height */ }
 body { min-height: 100%; position: relative; }
@@ -22,6 +23,7 @@ body { min-height: 100%; position: relative; }
 }
 
 #nav { margin-bottom: 0; background: #7b091a; }
+#nav .navbar-nav > .active > a, #nav .navbar-nav > .active > a:hover, #nav .navbar-nav > .active > a:focus { background: #6b0514; color: #FFF; }
 
 #wrapper.home { background: #7b091a; padding-top: 45px; }
 
@@ -30,6 +32,9 @@ body { min-height: 100%; position: relative; }
 #masthead h4 { font-size: 1.8em; font-weight: 200; }
 
 #changes { margin: 50px 0; }
+
+.container { width: 950px; margin-top: 50px; }
+.sidebar { margin-top: 42px; padding-top: 10px; padding-bottom: 10px; text-shadow: 0 1px 0 #fff; background-color: #fce7ea; border-radius: 5px; }
 
 #footer { margin-top: 50px; }
 
