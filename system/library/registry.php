@@ -1,6 +1,6 @@
 <?php
 	// Version
-	define('VERSION', 'Beta 0.4');
+	define('VERSION', 'Beta 0.4.2');
 
 	final class Registry {
 		private $data = array();
