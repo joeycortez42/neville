@@ -26,7 +26,12 @@
 	session_save_path(DIR_ROOT . 'sessions');
 */	
 	// Engine
-	foreach (glob(DIR_APP . 'library/*.php') as $file) {
+	foreach (glob(DIR_APP . 'system/library/*.php') as $file) {
+		require_once($file);
+    }
+
+	// Helper
+	foreach (glob(DIR_APP . 'system/helper/*.php') as $file) {
 		require_once($file);
     }
 	
