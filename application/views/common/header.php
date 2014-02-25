@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
+		<meta charset="utf-8">
+		<meta name="language" content="en-us" /> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title><?=$title;?></title>
 		<!--<base href="<?=HTTP_SERVER;?>">-->
-		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 		<meta name="generator" content="Neville <?=VERSION;?>" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="keywords" content="<?=$keywords;?>" />
 		<meta http-equiv="description" content="<?=$description;?>" />
-		<meta name="language" content="en-us" /> 
 		<!-- Bootstrap CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
-		<!--[if lt IE 9]><script language="javascript" type="text/javascript" src="js/respond.min.js"></script><![endif]-->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
 		<!-- Neville CSS -->
-		<link href="css/neville.css" rel="stylesheet" media="screen">
+		<link href="css/neville.css" rel="stylesheet">
 	</head>
 <body class="<?=$bodyClass;?>">

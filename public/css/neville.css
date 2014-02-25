@@ -1,74 +1,39 @@
-/*!
- * neville.css v0.4.2 by @nokemono42
+/*
+ * neville.css v0.4.4 by @nokemono42
  *
- * Copyright 2013 Blossomers, Inc
+ * Copyright 2014 Blossomers, Inc
  * Licensed under the Apache License v2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  *
 */
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900);
 
+* { font-family: 'Roboto', sans-serif; }
 .white, .white a, .white a:hover { color:#FFF; }
 .red { color: #801005; }
 .lightred { color: #F5A3A2; }
 
+body.home { background: #801005; }
+
+#masthead { margin-top: 100px; }
+#masthead h1 { font-size: 7em; }
+#masthead h3 { font-size: 1.75em; font-weight: 300; }
+#masthead h4 { font-weight: 300; }
+
 .btn-outline { color: #fff; background-color: transparent; border-color: #FFFFFF; }
 .btn-outline:hover { color: #801005; background-color: #FFFFFF; border-color:transparent; }
-
-body { padding-top: 70px; }
-
-.home { background: #801005; }
-
-#masthead { margin-top: 120px; }
-#masthead h1 { font-size: 6.5em; }
-#masthead h3 { font-size: 1.85em; font-weight: 200; }
-#masthead h4 { font-weight: 200; }
 
 .download { margin-top:75px; }
 .download .btn-outline { padding:20px 45px; font-weight: 400; }
 
-#sidebar { background-color: #faf3f3; border-radius: 5px; margin-left: -15px; padding-top: 10px; padding-bottom: 10px; min-width: 220px; }
-#sidebar.affix { position: fixed; top: 80px; }
-#sidebar .nav .nav { display: none; }
-#sidebar .nav .nav > li > a { padding-left: 30px; }
-
-.doc-header { margin-bottom: 50px; }
-.doc-header h1 { color: #801005; font-size: 3.5em; }
-.doc-header p {  color: #7E7F80; font-weight: 300; font-size: 1.35em; line-height: 1.5; }
-
-#footer { margin-top: 45px; padding-top: 80px; border-top: 1px solid #e5e5e5; }
+#footer { margin-top: 0; padding-top: 80px; }
 #footer .social { display: inline-block; margin-right: 20px; }
 #footer .social.last { margin-right: 0; }
-#footer .license { margin-top: 20px; color: #919191; }
-.home #footer { border-top: none; }
-.home #footer .license { display: none; }
+#footer .license { margin-top: 20px; color: #FFFFFF; font-weight: 300; }
+#footer .license a { color: #F5A3A2; font-weight: 400; }
 
 /** Bootstrap Override **/
 .navbar { background: #801005; border: 1px solid #600b03; }
-.navbar-nav > li > a { color: #F5A3A2; }
-.navbar-nav > li > a:hover { color: #FFFFFF; }
-.navbar-brand { color: #FFFFFF; }
-
-.navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus { background: #600b03; color: #FFFFFF; }
-
-#sidebar .nav > li > a { padding: 5px 20px; color: #919191; text-shadow: 0 1px 0 #fff; }
-#sidebar .nav > .active > a { color: #D18C8C; font-weight: bold; }
-#sidebar .nav > li > a:hover { background: #f6ebeb; }
-
-
-/*
-.darkred, .darkred a { color: #6b0514; }
-.grey, .grey a { color: #FFD9D9; }*
-
-
-html,body { margin:0; padding:0; height:100%; /* needed for container min-height * }
-body { min-height: 100%; position: relative; }
-
-#wrapper { position:relative; /* needed for footer positioning*
-	margin:0 auto; /* center, not in IE5 *
-	height:auto !important; /* real browsers *
-	height:100%; /* IE6: treaded as min-height*
-	min-height:100%; /* real browsers *
-}
-
-.sidebar { margin-top: 42px; padding-top: 10px; padding-bottom: 10px; text-shadow: 0 1px 0 #fff; background-color: #fce7ea; border-radius: 5px; }
-*/
+.navbar-inverse .navbar-brand { color: #FFFFFF; }
+.navbar-inverse .navbar-nav > li > a { color:#F5A3A2; }
+.navbar-inverse .navbar-nav > li > a:hover { background-color: #74170f; }

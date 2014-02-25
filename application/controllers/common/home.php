@@ -1,6 +1,9 @@
-<?php  
+<?php
 	class ControllerCommonHome extends Controller {
-		public function index() {		
+		public function index() {
+			$this->document->setTitle('Neville ');
+			$this->document->setBodyClass('home');
+
 			$this->view = 'common/home.php';
 
 			$this->children = array(

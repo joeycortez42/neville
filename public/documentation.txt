@@ -1,0 +1,40 @@
+Index of functions:
+
+Controller => forward() - When to use?
+Controller => redirect() - When to use?
+Controller => getChild()
+Controller => render()
+
+Document => setTitle()
+Document => getTitle()
+Document => setDescription() - When to use?
+Document => getDescription() - When to use?
+Document => setKeywords() - When to use?
+Document => getKeywords() - When to use?
+Document => addLink() - When to use?
+Document => getLinks() - When to use?
+Document => addStyle() - When to use?
+Document => getStyles() - When to use?
+Document => addScript() - When to use?
+Document => getScripts() - When to use?
+
+Front => dispatch()
+Front => execute()
+
+Loader => model() - When to use?
+
+Registry => get()
+Registry => set()
+Registry => has() - When to use?
+
+Response => addHeader() - When to use?
+Response => redirect() - When to use?
+Response => setOutput()
+Respnose => output()
+
+Request => clean() - When to use?
+
+Route => getFile()
+Route => getClass()
+Route => getMethod()
+Route => getArgs()
