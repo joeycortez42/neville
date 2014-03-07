@@ -11,7 +11,7 @@
 		public $header_string;
 		public $boundary_hash;
 		public $sent;
-		
+
 		public function __construct($to, $from, $subject, $text_content = "", $html_content = "") {
 			$this->to            = $to;
 			$this->from          = $from;
@@ -59,11 +59,11 @@
 		private function set_default_headers() {
 			$this->headers[] = 'MIME-Version: 1.0';
 			$this->headers[] = "From: {$this->from}";
-			$this->headers[] = "To: {$this->to}";
-			$this->headers[] = "Subject: {$this->subject}";
+			//$this->headers[] = "To: {$this->to}";
+			//$this->headers[] = "Subject: {$this->subject}";
 			$this->headers[] = "Content-type: multipart/mixed; boundary=\"PHP-mixed-{$this->boundary_hash}\"";
 		}
-		
+
 		private function prepare_attachments() {
 			foreach($this->attachments as $attachment) {
 				$file_name  = basename($attachment);
@@ -77,15 +77,14 @@
 			}
 			$this->body .= "--PHP-mixed-{$this->boundary_hash}--\n\n";
 		}
-		
-		
+
 		private function prepare_text() {
 			$this->body .= "--PHP-alt-{$this->boundary_hash}\n";
 			$this->body .= "Content-Type: text/plain; charset=\"iso-8859-1\"\n";
 			$this->body .= "Content-Transfer-Encoding: 7bit\n\n";
 			$this->body .= $this->text_content."\n\n";
 		}
-		
+
 		private function prepare_html() {
 			$this->body .= "--PHP-alt-{$this->boundary_hash}\n";
 			$this->body .= "Content-Type: text/html; charset=\"iso-8859-1\"\n";
