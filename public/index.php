@@ -21,17 +21,15 @@
 		require_once($file);
 	}
 
-	// Helper
-	foreach (glob(DIR_APP . 'system/helper/*.php') as $file) {
-		require_once($file);
-	}
-
 	// Registry
 	$registry = new Registry();
 
 	// Loader
 	$loader = new Loader($registry);
 	$registry->set('load', $loader);
+	
+	// Database 
+	$registry->set('db', new Database());
 
 	// Request
 	$request = new Request();
