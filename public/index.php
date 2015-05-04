@@ -27,9 +27,9 @@
 	// Loader
 	$loader = new Loader($registry);
 	$registry->set('load', $loader);
-	
-	// Database 
-	$registry->set('db', new Database());
+
+	// Database
+	//$registry->set('db', new Database());
 
 	// Request
 	$request = new Request();
@@ -41,9 +41,9 @@
 	$registry->set('response', $response);
 
 	// Document
-	$registry->set('document', new Document()); 
+	$registry->set('document', new Document());
 
-	// Front Controller 
+	// Front Controller
 	$controller = new Front($registry);
 
 	// Router
