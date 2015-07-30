@@ -1,9 +1,12 @@
 <?php
+	// Version
+	define('VERSION', 'Beta 0.4.6');
+
 	// Configuration
 	if (file_exists('config.php')) {
 		require_once('config.php');
 	} else {
-		exit('<b>Error</b>: public/<b>config.php</b> does not exist.');
+		exit('<b>Error</b>: <b>config.php</b> does not exist.');
 	}
 
 	// Error Reporting
@@ -12,14 +15,20 @@
 	ini_set("display_errors", 1);
 
 	// Check PHP Version
-	if (version_compare(phpversion(), '5.4.0', '<') == true) {
-		exit('<b>Error</b>: PHP 5.4+ required.');
-	}
+	/*
+	if (version_compare(phpversion(), '5.6.0', '<') == true) {
+		exit('<b>Error</b>: PHP 5.6+ required.');
+	} */
 
 	// Engine
 	foreach (glob(DIR_APP . 'system/library/*.php') as $file) {
 		require_once($file);
 	}
+
+	// Helper
+	foreach (glob(DIR_APP . 'system/helper/*.php') as $file) {
+		require_once($file);
+    }
 
 	// Registry
 	$registry = new Registry();
@@ -29,7 +38,11 @@
 	$registry->set('load', $loader);
 
 	// Database
-	//$registry->set('db', new Database());
+	$registry->set('db', new Database());
+
+	// Url
+	$url = new Url(HTTP_SERVER, HTTP_SERVER ? HTTP_SERVER : HTTP_SERVER);
+	$registry->set('url', $url);
 
 	// Request
 	$request = new Request();
@@ -40,8 +53,15 @@
 	$response->addHeader('Content-Type: text/html; charset=utf-8');
 	$registry->set('response', $response);
 
+	// Session
+	$session = new Session();
+	$registry->set('session', $session);
+
 	// Document
 	$registry->set('document', new Document());
+
+	// Login
+	$registry->set('user', new User($registry));
 
 	// Front Controller
 	$controller = new Front($registry);
