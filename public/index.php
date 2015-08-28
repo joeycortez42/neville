@@ -1,6 +1,6 @@
 <?php
 	// Version
-	define('VERSION', 'Beta 0.4.6');
+	define('VERSION', 'Beta 0.5');
 
 	// Configuration
 	if (file_exists('config.php')) {
@@ -15,10 +15,10 @@
 	ini_set("display_errors", 1);
 
 	// Check PHP Version
-	/*
-	if (version_compare(phpversion(), '5.6.0', '<') == true) {
-		exit('<b>Error</b>: PHP 5.6+ required.');
-	} */
+
+	if (version_compare(phpversion(), '5.4.0', '<') == true) {
+		exit('<b>Error</b>: PHP 5.4+ required.');
+	} 
 
 	// Engine
 	foreach (glob(DIR_APP . 'system/library/*.php') as $file) {

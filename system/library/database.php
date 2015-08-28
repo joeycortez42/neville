@@ -34,7 +34,7 @@
 				$result = new stdClass();
 				$result->row = (isset($data[0]) ? $data[0] : array());
 				$result->rows = $data;
-				//$result->num_rows = $this->statement->rowCount();
+				$result->num_rows = $query->rowCount();
 			} catch (PDOException $e) {
 				die('Error: ' . $e->getMessage());
 			}

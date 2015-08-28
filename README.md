@@ -1,4 +1,4 @@
-[Neville Beta v.0.4.5](http://neville.blossomers.com)
+[Neville Beta v.0.5](http://neville.blossomers.com)
 ====================
 
 Neville is a lightweight PHP5 MVC Framework for building web applications.
@@ -17,16 +17,18 @@ Features
 --------
 * Clean URLs
 * Helper Classes
-* Includes jQuery v1.11.2
-* Includes Bootstrap v3.3.4
+	- Curl
+	- Phone Number formatting
+	- Dropdown generator
+* Includes jQuery v2.1.1
+* Includes Bootstrap v3.3.5
 
 Change Log
 ----------
+* 0.5 - Updated for jQuery v2.1.1. Added helper Format and library for Pagination. Updated database library. Fixed some issues with user sessions and added login usage samples.
+* 0.4.6 - Updated for Bootstrap v3.3.5 and jQuery v1.11.3. Added helpers Select and Curl. Updated database library. Added Session, URL, and User libraries. 
 * 0.4.5 - Updated for Bootstrap v3.3.4.
 * 0.4.4 - Updated for Bootstrap v3.1.1. Dropped unsupported functions.
-* 0.4.3 - Update to final Bootstrap v3.0.0. Continued Neville documentation.
-* 0.4.2 - Moved library to system folder. Updated Bootstrap 3 RC2 files and Neville integration. Added clean URL support and HTML select helper class. Updated documentation.
-* 0.4.1 - Update folder structure. Added Bootstrap 3 RC1.
 
 Author
 ------
@@ -39,3 +41,4 @@ Author
 To-do
 ------
 System wide way of hidding footer per page.
+Add to documentation.

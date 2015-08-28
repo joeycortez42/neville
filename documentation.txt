@@ -5,12 +5,15 @@ Controller => redirect() - When to use?
 Controller => getChild()
 Controller => render()
 
+Database => query()
+
 Document => setTitle()
 Document => getTitle()
 Document => setDescription() - When to use?
 Document => getDescription() - When to use?
 Document => setKeywords() - When to use?
 Document => getKeywords() - When to use?
+Document => setBodyClass()
 Document => addLink() - When to use?
 Document => getLinks() - When to use?
 Document => addStyle() - When to use?
@@ -23,18 +26,40 @@ Front => execute()
 
 Loader => model() - When to use?
 
+Mail => send()
+Mail => addHeader()
+Mail => addAttachment()
+Mail => prepareBody()
+Mail => prepareHeaders()
+Mail => setDefaultHeaders()
+Mail => prepareAttachments()
+Mail => prepareText()
+Mail => prepareHtml()
+
+Pagination => render()
+
 Registry => get()
 Registry => set()
 Registry => has() - When to use?
+
+Request => clean() - When to use?
 
 Response => addHeader() - When to use?
 Response => redirect() - When to use?
 Response => setOutput()
 Respnose => output()
 
-Request => clean() - When to use?
-
 Route => getFile()
 Route => getClass()
 Route => getMethod()
 Route => getArgs()
+
+Session => getId()
+Session => destory()
+
+Url => addRewrite()
+Url => link
+
+User => login()
+User => logout()
+User => isLoggedIn()

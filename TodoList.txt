@@ -3,3 +3,5 @@
 ========================
 
 - Add file upload processing
+- System wide way of hidding footer per page.
+- Add to documentation.

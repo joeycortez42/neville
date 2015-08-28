@@ -1,6 +1,10 @@
 <?php
 	class ControllerCommonHome extends Controller {
 		public function index() {
+			/*if (!$this->user->isLoggedIn()) {
+				$this->response->redirect($this->url->link('account/login', '', ''));
+			}*/
+
 			$this->document->setTitle('Neville ');
 			$this->document->setBodyClass('home');
 

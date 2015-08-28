@@ -1,6 +1,7 @@
 <?php
 	setlocale(LC_MONETARY, 'en_US'); #Optional
 
+	define('DOMAIN', 'neville');
 	define('HTTP_SERVER', 'http://neville/');
 	define('DIR_APP', '/Users/nokemono42/Sites/neville/');
 

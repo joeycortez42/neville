@@ -1,4 +1,4 @@
-<?php 
+<?php
 	class Mail {
 		public $to;
 		public $from;
@@ -25,25 +25,25 @@
 		}
 
 		public function send() {
-			$this->prepare_headers();      
-			$this->prepare_body();
-			
+			$this->prepareHeaders();
+			$this->prepareBody();
+
 			if(!empty($this->attachments)){
-				$this->prepare_attachments();  
+				$this->prepareAttachments();
 			}
 			$this->sent = mail($this->to, $this->subject, $this->body, $this->header_string);
 			return $this->sent;
 		}
 
-		public function add_header($header) {
+		public function addHeader($header) {
 			$this->headers[] = $header;
 		}
 
-		public function add_attachment($file) {
+		public function addAttachment($file) {
 			$this->attachments[] = $file;
 		}
 
-		private function prepare_body() {
+		private function prepareBody() {
 			$this->body .= "--PHP-mixed-{$this->boundary_hash}\n";
 			$this->body .= "Content-Type: multipart/alternative; boundary=\"PHP-alt-{$this->boundary_hash}\"\n\n";
 			if(!empty($this->text_content)) $this->prepare_text();
@@ -51,12 +51,12 @@
 			$this->body .= "--PHP-alt-{$this->boundary_hash}--\n\n";
 		}
 
-		private function prepare_headers() {
+		private function prepareHeaders() {
 			$this->set_default_headers();
 			$this->header_string = implode("\r\n", $this->headers)."\r\n";
 		}
 
-		private function set_default_headers() {
+		private function setDefaultHeaders() {
 			$this->headers[] = 'MIME-Version: 1.0';
 			$this->headers[] = "From: {$this->from}";
 			//$this->headers[] = "To: {$this->to}";
@@ -64,10 +64,10 @@
 			$this->headers[] = "Content-type: multipart/mixed; boundary=\"PHP-mixed-{$this->boundary_hash}\"";
 		}
 
-		private function prepare_attachments() {
+		private function prepareAttachments() {
 			foreach($this->attachments as $attachment) {
 				$file_name  = basename($attachment);
-				
+
 				$this->body .= "--PHP-mixed-{$this->boundary_hash}\n";
 				$this->body .= "Content-Type: application/octet-stream; name=\"{$file_name}\"\n";
 				$this->body .= "Content-Transfer-Encoding: base64\n";
@@ -78,14 +78,14 @@
 			$this->body .= "--PHP-mixed-{$this->boundary_hash}--\n\n";
 		}
 
-		private function prepare_text() {
+		private function prepareText() {
 			$this->body .= "--PHP-alt-{$this->boundary_hash}\n";
 			$this->body .= "Content-Type: text/plain; charset=\"iso-8859-1\"\n";
 			$this->body .= "Content-Transfer-Encoding: 7bit\n\n";
 			$this->body .= $this->text_content."\n\n";
 		}
 
-		private function prepare_html() {
+		private function prepareHtml() {
 			$this->body .= "--PHP-alt-{$this->boundary_hash}\n";
 			$this->body .= "Content-Type: text/html; charset=\"iso-8859-1\"\n";
 			$this->body .= "Content-Transfer-Encoding: 7bit\n\n";
