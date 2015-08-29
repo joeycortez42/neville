@@ -28,9 +28,8 @@
 			$this->prepareHeaders();
 			$this->prepareBody();
 
-			if(!empty($this->attachments)){
-				$this->prepareAttachments();
-			}
+			if (!empty($this->attachments)) $this->prepareAttachments();
+
 			$this->sent = mail($this->to, $this->subject, $this->body, $this->header_string);
 			return $this->sent;
 		}
@@ -46,14 +45,14 @@
 		private function prepareBody() {
 			$this->body .= "--PHP-mixed-{$this->boundary_hash}\n";
 			$this->body .= "Content-Type: multipart/alternative; boundary=\"PHP-alt-{$this->boundary_hash}\"\n\n";
-			if(!empty($this->text_content)) $this->prepare_text();
-			if(!empty($this->html_content)) $this->prepare_html();
+			if (!empty($this->text_content)) $this->prepare_text();
+			if (!empty($this->html_content)) $this->prepare_html();
 			$this->body .= "--PHP-alt-{$this->boundary_hash}--\n\n";
 		}
 
 		private function prepareHeaders() {
 			$this->set_default_headers();
-			$this->header_string = implode("\r\n", $this->headers)."\r\n";
+			$this->header_string = implode("\r\n", $this->headers) . "\r\n";
 		}
 
 		private function setDefaultHeaders() {

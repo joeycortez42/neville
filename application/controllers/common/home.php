@@ -6,7 +6,7 @@
 			}*/
 
 			$this->document->setTitle('Neville ');
-			$this->document->setBodyClass('home');
+			$this->document->addStyle('css/home.css');
 
 			$this->view = 'common/home.php';
 

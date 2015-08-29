@@ -27,7 +27,7 @@
 				$data = array();
 
 				// fetch
-				while($row = $query->fetch()){
+				while($row = $query->fetch()) {
 					$data[] = $row;
 				}
 
@@ -49,17 +49,5 @@
 				return $result;
 			}
 		}
-
-		/*public function select($sql) {
-			//echo $sql;
-			try {
-				$statement = $this->connection->prepare($sql);
-				$statement->execute();
-				$statement->setFetchMode(PDO::FETCH_ASSOC);
-				return $statement->fetchAll();
-			} catch (PDOException $e) {
-				die('Error: ' . $e->getMessage());
-			}
-		}*/
 	}
 ?>

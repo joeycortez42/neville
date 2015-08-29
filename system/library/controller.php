@@ -38,7 +38,7 @@
 
 				$class = $action->getClass();
 				$controller = new $class($this->registry);
-				$controller->{$action->getMethod()}($action->getArgs());
+				$controller->{ $action->getMethod() }($action->getArgs());
 
 				return $controller->output;
 			} else {
@@ -60,7 +60,7 @@
 				ob_end_clean();
 
 				return $this->output;
-				} else {
+			} else {
 				trigger_error('Error: Could not load view ' . DIR_VIEW . $this->view . '!');
 				exit();
 			}

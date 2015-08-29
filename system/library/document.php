@@ -3,8 +3,6 @@
 		private $title;
 		private $description;
 		private $keywords;
-		private $bodyClass;
-		private $links = array();
 		private $styles = array();
 		private $scripts = array();
 
@@ -30,25 +28,6 @@
 
 		public function getKeywords() {
 			return $this->keywords;
-		}
-		
-		public function setBodyClass($bodyClass) {
-			$this->bodyClass = $bodyClass;
-		}
-
-		public function getBodyClass() {
-			return $this->bodyClass;
-		}
-
-		public function addLink($href, $rel) {
-			$this->links[md5($href)] = array(
-				'href' => $href,
-				'rel'  => $rel
-			);
-		}
-
-		public function getLinks() {
-			return $this->links;
 		}
 
 		public function addStyle($href, $rel = 'stylesheet', $media = 'screen') {

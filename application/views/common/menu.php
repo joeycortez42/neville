@@ -1,15 +1,15 @@
-<nav class="navbar navbar-default navbar-static-top" role="navigation">
-	<div class="container">
-		<div class="navbar-header white">
-			<a class="navbar-brand" href="<?=HTTP_SERVER;?>">Neville</a>
-		</div>
-		<div>
-			<ul class="nav navbar-nav">
-				<li<?=($route == 'getting-started') ? ' class="active"' : '';?>><a href="getting-started">Getting Started</a></li>
-				<li<?=($route == 'documentation') ? ' class="active"' : '';?>><a href="documentation">Documentation</a></li>
-				<!--<li<?=($route == 'helper-classes') ? ' class="active"' : '';?>><a href="#">Helper Classes</a></li>
-				<li<?=($route == 'plugins') ? ' class="active"' : '';?>><a href="#">Plug-ins</a></li>-->
+<?php
+	$li_active = ' class="active"';
+?>
+<div class="masthead clearfix">
+	<div class="inner">
+		<h3 class="masthead-brand"><a href="<?php echo HTTP_SERVER;?>">Neville</a></h3>
+		<nav>
+			<ul class="nav masthead-nav">
+				<li<?php if ($route == 'getting-started') echo $li_active;?>><a href="getting-started">Getting Started</a></li>
+				<li<?php if ($route == 'documentation') echo $li_active;?>><a href="documentation">Documentation</a></li>
+				<li<?php if ($route == 'helper-classes') echo $li_active;?>><a href="helper-classes">Helper Classes</a></li>
 			</ul>
-		</div>
+		</nav>
 	</div>
-</nav>
+</div>

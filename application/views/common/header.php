@@ -1,19 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-us">
 	<head>
-		<meta charset="utf-8">
-		<meta name="language" content="en-us" /> 
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta charset="UTF-8">
+		<meta name="language" content="en-us" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge">
 		<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title><?=$title;?></title>
+		<title><?php echo $title;?></title>
 		<!--<base href="<?=HTTP_SERVER;?>">-->
-		<meta name="generator" content="Neville <?=VERSION;?>" />
-		<meta http-equiv="keywords" content="<?=$keywords;?>" />
-		<meta http-equiv="description" content="<?=$description;?>" />
+		<meta name="generator" content="Neville <?php echo VERSION;?>" />
+		<meta http-equiv="keywords" content="<?php echo $keywords;?>" />
+		<meta http-equiv="description" content="<?php echo $description;?>" />
 		<!-- Bootstrap CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<!-- Neville CSS -->
-		<link href="css/neville.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700">
+		<link rel="stylesheet" href="css/neville.css">
+<?php if ($styles) foreach ($styles as $style) { ?>
+		<link rel="<?php echo $style['rel']; ?>" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
+<?php } ?>
 	</head>
-<body class="<?=$bodyClass;?>">
+<body>
+	<div class="site-wrapper">
+		<div class="site-wrapper-inner">
+			<div class="cover-container">

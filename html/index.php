@@ -1,6 +1,6 @@
 <?php
 	// Version
-	define('VERSION', 'Beta 0.5');
+	define('VERSION', 'Beta 0.5.2');
 
 	// Configuration
 	if (file_exists('config.php')) {
@@ -15,10 +15,9 @@
 	ini_set("display_errors", 1);
 
 	// Check PHP Version
-
-	if (version_compare(phpversion(), '5.4.0', '<') == true) {
-		exit('<b>Error</b>: PHP 5.4+ required.');
-	} 
+	if (version_compare(phpversion(), '5.3.29', '<') == true) {
+		exit('<b>Error</b>: PHP 5.3+ required.');
+	}
 
 	// Engine
 	foreach (glob(DIR_APP . 'system/library/*.php') as $file) {
@@ -50,7 +49,7 @@
 
 	// Response
 	$response = new Response();
-	$response->addHeader('Content-Type: text/html; charset=utf-8');
+	$response->addHeader('Content-Type: text/html; charset=UTF-8');
 	$registry->set('response', $response);
 
 	// Session
