@@ -14,8 +14,8 @@
 		<!-- Bootstrap CSS -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
 		<!-- Neville CSS -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700">
 		<link rel="stylesheet" href="css/neville.css">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700">
 <?php if ($styles) foreach ($styles as $style) { ?>
 		<link rel="<?php echo $style['rel']; ?>" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
@@ -23,4 +23,3 @@
 <body>
 	<div class="site-wrapper">
 		<div class="site-wrapper-inner">
-			<div class="cover-container">

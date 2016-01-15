@@ -4,13 +4,12 @@
 	</div>
 </footer>
 	<!-- jQuery Javascript -->
-	<script src="js/jquery-2.1.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
 	<!-- Bootstrap Javascript -->
 	<script src="js/bootstrap.min.js"></script>
 <?php if ($scripts) foreach ($scripts as $script) { ?>
 	<script src="<?php echo $script; ?>"></script>
 <?php } ?>
-		</div>
 	</div>
 </body>
 </html>

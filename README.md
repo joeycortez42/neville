@@ -1,4 +1,4 @@
-[Neville Beta v.0.5.2](http://neville.blossomers.com)
+[Neville Beta v.0.5.4](http://neville.blossomers.com)
 ====================
 
 Neville is a lightweight PHP5 MVC Framework for building web applications.
@@ -15,29 +15,27 @@ Built Using
 
 Features
 --------
-* Clean URLs
-* Helper Classes
+* Bundled Bootstrap v3.3.6
+* Uses Apache Mod_ReWrite for Clean URLs
+* Optional Helper Classes
 	- Curl
 	- Phone Number formatting
 	- Dropdown generator
-* Includes jQuery v2.1.1
-* Includes Bootstrap v3.3.5
 
 Change Log
 ----------
+* 0.5.4 - **STABLE** Updated for Bootstrap v3.3.6 and links to jQuery v2.2.0, Neville no longer bundles jQuery files. Updated database library, should be more efficient now.
+* 0.5.3 - **STABLE** Updated Neville website. Updated documentation. Added MySQL install script and updates user library to match table.
 * 0.5.2 - **STABLE** Standardized PHP and CSS code. Updated Neville website.
 * 0.5.1 - **STABLE** Updated folder structure to match website. Updated Neville website text. Lowered PHP build version.
 * 0.5 - **STABLE** Updated for jQuery v2.1.1. Added helper Format and library for Pagination. Updated database library. Fixed some issues with user sessions and added login usage samples.
-* 0.4.6 - Updated for Bootstrap v3.3.5 and jQuery v1.11.3. Added helpers Select and Curl. Updated database library. Added Session, URL, and User libraries. 
-* 0.4.5 - Updated for Bootstrap v3.3.4.
 
 Author
 ------
 * Email: joey@blossomers.com
-* Twitter: http://twitter.com/nokemono42
+* Twitter: http://twitter.com/thejoeycortez
 * GitHub: https://github.com/nokemono42
 * Work: http://blossomers.com
-
 
 To-do
 ------
@@ -46,4 +44,3 @@ To-do
 * Check multi selection on select helper.
 * Check pagination library, possibly rewrite.
 * Test and enable SSL URL support.
-* Generate SQL database script for sample database.
