@@ -24,11 +24,11 @@ Features
 
 Change Log
 ----------
+* 0.5.4.1 - **STABLE** Oops, broke database library then fixed it. Also, fixed session issues and user login library.
 * 0.5.4 - **STABLE** Updated for Bootstrap v3.3.6 and links to jQuery v2.2.0, Neville no longer bundles jQuery files. Updated database library, should be more efficient now.
 * 0.5.3 - **STABLE** Updated Neville website. Updated documentation. Added MySQL install script and updates user library to match table.
 * 0.5.2 - **STABLE** Standardized PHP and CSS code. Updated Neville website.
 * 0.5.1 - **STABLE** Updated folder structure to match website. Updated Neville website text. Lowered PHP build version.
-* 0.5 - **STABLE** Updated for jQuery v2.1.1. Added helper Format and library for Pagination. Updated database library. Fixed some issues with user sessions and added login usage samples.
 
 Author
 ------

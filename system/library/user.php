@@ -9,9 +9,12 @@
 			$this->session = $registry->get('session');
 
 			if (isset($this->session->data['id'])) {
-				$user_query = $this->db->query("SELECT id FROM users WHERE id = '" . (int)$this->session->data['id'] . "' AND status = 1");
+				$user_query = $this->db->query("SELECT id, email FROM users WHERE id = " . (int)$this->session->data['id'] . " AND status = 1");
 
 				if ($user_query->num_rows) {
+					$this->session->data['id'] = $user_query->row['id'];
+					$this->session->data['email'] = $user_query->row['email'];
+
 					$this->user_id = $user_query->row['id'];
 					$this->email = $user_query->row['email'];
 				} else {
