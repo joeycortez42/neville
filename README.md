@@ -1,4 +1,4 @@
-[Neville Beta v.0.5.4](http://neville.blossomers.com)
+[Neville Beta v.0.5.4.2](http://neville.blossomers.com)
 ====================
 
 Neville is a lightweight PHP5 MVC Framework for building web applications.
@@ -24,6 +24,7 @@ Features
 
 Change Log
 ----------
+* 0.5.4.2 - **STABLE** Fixed user cookie issue.
 * 0.5.4.1 - **STABLE** Oops, broke database library then fixed it. Also, fixed session issues and user login library.
 * 0.5.4 - **STABLE** Updated for Bootstrap v3.3.6 and links to jQuery v2.2.0, Neville no longer bundles jQuery files. Updated database library, should be more efficient now.
 * 0.5.3 - **STABLE** Updated Neville website. Updated documentation. Added MySQL install script and updates user library to match table.

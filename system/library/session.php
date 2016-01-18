@@ -10,19 +10,14 @@
 
 		public function start($session_id = '') {
 			if (!session_id()) {
-				ini_set('session.use_only_cookies', 'Off');
-				ini_set('session.use_cookies', 'On');
-				ini_set('session.use_trans_sid', 'Off');
-				ini_set('session.cookie_httponly', 'On');
-
 				session_name(SESSION_NAME);
 
 				if ($session_id) {
 					session_id($session_id);
 				}
 
-				session_set_cookie_params(0, '/');
 				session_start();
+				setcookie(session_name(), session_id(), strtotime('+30 days'), '', '', FALSE, TRUE);
 			}
 
 			if (!isset($_SESSION)) {
