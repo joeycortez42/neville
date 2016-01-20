@@ -12,12 +12,12 @@
 		<div class="inner">
 			<div class="social"><iframe src="http://ghbtns.com/github-btn.html?user=nokemono42&repo=neville&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe></div>
 			<div class="social"><iframe src="http://ghbtns.com/github-btn.html?user=nokemono42&repo=neville&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></div>
-			<div class="social"><a href="https://twitter.com/nokemono42" class="twitter-follow-button" data-show-count="true">Follow @nokemono42</a>
+			<div class="social"><a href="https://twitter.com/thejoeycortez" class="twitter-follow-button" data-show-count="true">Follow @thejoeycortez</a>
 				<script>
 				!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 				</script>
 			</div>
-			<div class="social last"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out Neville, a PHP MVC Framework, by @nokemono42.">Tweet</a>
+			<div class="social last"><a href="https://twitter.com/share" class="twitter-share-button" data-text="Check out Neville, a PHP MVC Framework, by @thejoeycortez.">Tweet</a>
 				<script>
 				!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
 				</script>
