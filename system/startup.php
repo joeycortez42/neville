@@ -1,6 +1,6 @@
 <?php
 	// Version
-	define('VERSION', 'Beta 0.6');
+	define('VERSION', 'Beta 0.6.5');
 
 	// Error Reporting
 	error_reporting(E_ALL ^ E_NOTICE);
@@ -8,8 +8,8 @@
 	ini_set("display_errors", 1);
 
 	// Check PHP Version
-	if (version_compare(phpversion(), '5.3.29', '<') == true) {
-		exit('<b>Error</b>: PHP 5.3+ required.');
+	if (version_compare(phpversion(), '7.0', '<') == true) {
+		exit('<b>Error</b>: PHP 7.0+ required.');
 	}
 
 	// Engine

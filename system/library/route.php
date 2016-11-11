@@ -26,7 +26,9 @@
 				}
 			}
 
-			if ($args) $this->args = $args;
+			if ($args) {
+				$this->args = $args;
+			}
 
 			$method = array_shift($parts);
 

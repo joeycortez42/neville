@@ -4,7 +4,7 @@
 	</div>
 </footer>
 	<!-- jQuery Javascript -->
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Bootstrap Javascript -->
 	<script src="js/bootstrap.min.js"></script>
 <?php if ($scripts) foreach ($scripts as $script) { ?>

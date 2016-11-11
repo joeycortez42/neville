@@ -4,8 +4,8 @@
 	<div class="inner">
 		<h1 class="cover-heading white">Neville</h1>
 		<p class="lead">A lightweight PHP5 MVC Framework</p>
-		<p class="more-text">Built using Apache, PHP, and MySQL. Bundled with jQuery v2.1.1 and Bootstrap v3.3.5.</p>
-		<p class="more-text">Using Apache Mod_ReWrite for clean URLs, Includes optional Helper Classes.</p>
+		<p class="more-text">Built using Apache, PHP, MySQL and bundled with Bootstrap v3.3.7.</p>
+		<p class="more-text">Using Apache Mod_ReWrite for clean URLs. Includes optional Helper Classes.</p>
 		<a class="btn btn-download btn-lg" href="https://github.com/nokemono42/neville/archive/master.zip">Download <?=VERSION;?></a>
 	</div>
 	<div class="mastfooter">

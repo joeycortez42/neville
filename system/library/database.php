@@ -81,6 +81,10 @@
 			}
 		}
 
+		public function escape($string) {
+			return $this->connection->quote(trim($string));
+		}
+
 		public function countAffected() {
 			if ($this->statement) {
 				return $this->statement->rowCount();
