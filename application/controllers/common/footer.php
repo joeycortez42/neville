@@ -1,10 +1,9 @@
 <?php
 	class ControllerCommonFooter extends Controller {
-		protected function index() {
+		public function index() {
 			$data['scripts'] = $this->document->getScripts();
 
-			$this->view = 'common/footer.php';
-			$this->render();
+			return $this->load->view('common/footer', $data);
 		}
 	}
 ?>

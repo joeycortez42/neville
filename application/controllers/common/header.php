@@ -1,13 +1,13 @@
 <?php
 	class ControllerCommonHeader extends Controller {
-		protected function index() {
-			$this->data['title'] = $this->document->getTitle();
-			$this->data['keywords'] = 'Neville, PHP5, MVC, Framework';
-			$this->data['description'] = 'Neville is a lightweight PHP5 MVC Framework for building web applications.';
-			$this->data['styles'] = $this->document->getStyles();
+		public function index() {
+			$data['title'] = $this->document->getTitle();
+			$data['keywords'] = 'Neville, PHP5, MVC, Framework';
+			$data['description'] = 'Neville is a lightweight PHP5 MVC Framework for building web applications.';
+			$data['styles'] = $this->document->getStyles();
+			$data['class'] = $this->document->getClass();
 
-			$this->view = 'common/header.php';
-			$this->render();
+			return $this->load->view('common/header', $data);
 		}
 	}
 ?>

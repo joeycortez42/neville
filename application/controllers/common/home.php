@@ -8,15 +8,11 @@
 			$this->document->setTitle('Neville ');
 			$this->document->addStyle('css/home.css');
 
-			$this->view = 'common/home.php';
+			$data['menu'] = $this->load->controller('common/menu');
+			$data['footer'] = $this->load->controller('common/footer');
+			$data['header'] = $this->load->controller('common/header');
 
-			$this->children = array(
-				'common/header',
-				'common/menu',
-				'common/footer'
-			);
-
-			$this->response->setOutput($this->render());
+			$this->response->setOutput($this->load->view('common/home', $data));
 		}
 	}
 ?>

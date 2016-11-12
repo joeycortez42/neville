@@ -13,16 +13,18 @@
 			$this->rewrite[] = $rewrite;
 		}
 
-		public function link($route, $args = '', $connection = 'NONSSL') {
-			if ($connection == 'NONSSL') {
-				$url = $this->url;
+		public function link($route, $args = '', $secure = false) {
+			if ($this->ssl && $secure) {
+				$url = $this->ssl;
 			} else {
-				//$url = $this->ssl;
+				$url = $this->url;
 			}
 
 			$url .= 'index.php?route=' . $route;
 
-			if ($args) $url .= str_replace('&', '&amp;', '&' . ltrim($args, '&'));
+			if ($args) {
+				$url .= str_replace('&', '&amp;', '&' . ltrim($args, '&'));
+			}
 
 			foreach ($this->rewrite as $rewrite) {
 				$url = $rewrite->rewrite($url);

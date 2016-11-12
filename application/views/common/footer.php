@@ -7,9 +7,15 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 	<!-- Bootstrap Javascript -->
 	<script src="js/bootstrap.min.js"></script>
-<?php if ($scripts) foreach ($scripts as $script) { ?>
+<?php
+	if ($scripts) {
+		foreach ($scripts as $script) {
+?>
 	<script src="<?php echo $script; ?>"></script>
-<?php } ?>
+<?php
+		}
+	}
+?>
 	</div>
 </body>
 </html>

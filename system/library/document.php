@@ -3,7 +3,7 @@
 		private $title;
 		private $description;
 		private $keywords;
-		private $bodyClass;
+		private $class;
 		private $links = array();
 		private $styles = array();
 		private $scripts = array();
@@ -31,17 +31,17 @@
 		public function getKeywords() {
 			return $this->keywords;
 		}
-		
-		public function setBodyClass($bodyClass) {
-			$this->bodyClass = $bodyClass;
+
+		public function setClass($class) {
+			$this->class = $class;
 		}
 
-		public function getBodyClass() {
-			return $this->bodyClass;
+		public function getClass() {
+			return $this->class;
 		}
 
 		public function addLink($href, $rel) {
-			$this->links[md5($href)] = array(
+			$this->links[$href] = array(
 				'href' => $href,
 				'rel'  => $rel
 			);
@@ -52,7 +52,7 @@
 		}
 
 		public function addStyle($href, $rel = 'stylesheet', $media = 'screen') {
-			$this->styles[md5($href)] = array(
+			$this->styles[$href] = array(
 				'href'  => $href,
 				'rel'   => $rel,
 				'media' => $media
@@ -63,12 +63,16 @@
 			return $this->styles;
 		}
 
-		public function addScript($script) {
-			$this->scripts[md5($script)] = $script;
+		public function addScript($href, $postion = 'header') {
+			$this->scripts[$postion][$href] = $href;
 		}
 
-		public function getScripts() {
-			return $this->scripts;
+		public function getScripts($postion = 'header') {
+			if (isset($this->scripts[$postion])) {
+				return $this->scripts[$postion];
+			} else {
+				return array();
+			}
 		}
 	}
 ?>

@@ -1,19 +1,15 @@
-<?php  
+<?php
 	class ControllerDocumentation extends Controller {
 		public function index() {
 			$this->load->model('common/values');
-		
-			$this->data['states'] = $this->model_common_values->getStates('full');
-			
-			$this->view = 'documentation.php';
 
-			$this->children = array(
-				'common/header',
-				'common/menu',
-				'common/footer'
-			);
+			$data['states'] = $this->model_common_values->getStates('full');
 
-			$this->response->setOutput($this->render());
+			$data['menu'] = $this->load->controller('common/menu');
+			$data['footer'] = $this->load->controller('common/footer');
+			$data['header'] = $this->load->controller('common/header');
+
+			$this->response->setOutput($this->load->view('documentation', $data));
 		}
 	}
 ?>

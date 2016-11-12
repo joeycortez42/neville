@@ -1,104 +1,35 @@
 <?php
 	class Database {
-		public $connection = NULL;
-		private $statement = null;
+		private $adapter;
 
-		public function __construct() {
-			try {
-				$this->connection = new PDO('mysql:host=' . DB_SERVER . ';dbname=' . DB_DATABASE, DB_USERNAME, DB_PASSWORD, array(PDO::ATTR_PERSISTENT => true));
-				return $this->connection;
-			} catch (PDOException $e) {
-				die('Error: ' . $e->getMessage() . ' Error Code : ' . $e->getCode());
-			}
+		public function __construct($adapter, $hostname, $username, $password, $database, $port = NULL) {
+			$class = 'Database\\' . $adapter;
 
-			$this->connection->exec("SET NAMES 'utf8'");
-			$this->connection->exec("SET CHARACTER SET utf8");
-			$this->connection->exec("SET CHARACTER_SET_CONNECTION=utf8");
-			$this->connection->exec("SET SQL_MODE = ''");
-		}
-
-		public function prepare($sql) {
-			$this->statement = $this->connection->prepare($sql);
-		}
-
-		public function bindParam($parameter, $variable, $data_type = PDO::PARAM_STR, $length = 0) {
-			if ($length) {
-				$this->statement->bindParam($parameter, $variable, $data_type, $length);
+			if (class_exists($class)) {
+				$this->adapter = new $class($hostname, $username, $password, $database, $port);
 			} else {
-				$this->statement->bindParam($parameter, $variable, $data_type);
-			}
-		}
-
-		public function execute() {
-			try {
-				if ($this->statement && $this->statement->execute()) {
-					$data = array();
-
-					while ($row = $this->statement->fetch(PDO::FETCH_ASSOC)) {
-						$data[] = $row;
-					}
-
-					$result = new stdClass();
-					$result->row = (isset($data[0])) ? $data[0] : array();
-					$result->rows = $data;
-					$result->num_rows = $this->statement->rowCount();
-				}
-			} catch(PDOException $e) {
-				die('Error: ' . $e->getMessage() . ' Error Code : ' . $e->getCode());
+				throw new \Exception('Error: Could not load database adapter ' . $adapter . '!');
 			}
 		}
 
 		public function query($sql, $params = array()) {
-			$this->statement = $this->connection->prepare($sql);
-			$result = false;
-
-			try {
-				if ($this->statement && $this->statement->execute($params)) {
-					$data = array();
-
-					while ($row = $this->statement->fetch(PDO::FETCH_ASSOC)) {
-						$data[] = $row;
-					}
-
-					$result = new stdClass();
-					$result->row = (isset($data[0]) ? $data[0] : array());
-					$result->rows = $data;
-					$result->num_rows = $this->statement->rowCount();
-				}
-			} catch (PDOException $e) {
-				die('Error: ' . $e->getMessage() . ' Error Code : ' . $e->getCode());
-				exit();
-			}
-
-			if ($result) {
-				return $result;
-			} else {
-				$result = new stdClass();
-				$result->row = array();
-				$result->rows = array();
-				$result->num_rows = 0;
-				return $result;
-			}
+			return $this->adapter->query($sql, $params);
 		}
 
-		public function escape($string) {
-			return $this->connection->quote(trim($string));
+		public function escape($value) {
+			return $this->adapter->escape($value);
 		}
 
 		public function countAffected() {
-			if ($this->statement) {
-				return $this->statement->rowCount();
-			} else {
-				return 0;
-			}
+			return $this->adapter->countAffected();
 		}
 
 		public function getLastId() {
-			return $this->connection->lastInsertId();
+			return $this->adapter->getLastId();
 		}
 
-		public function __destruct() {
-			$this->connection = NULL;
+		public function connected() {
+			return $this->adapter->connected();
 		}
 	}
 ?>

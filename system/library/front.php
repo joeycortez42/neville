@@ -1,39 +1,34 @@
 <?php
-final class Front {
-	protected $registry;
-	protected $error;
+	final class Front {
+		protected $registry;
+		protected $error;
 
-	public function __construct($registry) {
-		$this->registry = $registry;
-	}
-
-	public function dispatch($route, $error) {
-		$this->error = $error;
-
-		while ($route) {
-			$route = $this->execute($route);
+		public function __construct($registry) {
+			$this->registry = $registry;
 		}
-	}
 
-	private function execute($route) {
-		if (file_exists($route->getFile())) {
-			require_once($route->getFile());
+		public function dispatch(Route $route, Route $error) {
+			$this->error = $error;
 
-			$class = $route->getClass();
-			$controller = new $class($this->registry);
-
-			if (is_callable(array($controller, $route->getMethod()))) {
-				$route = call_user_func_array(array($controller, $route->getMethod()), $route->getArgs());
-			} else {
-				$route = $this->error;
-				$this->error = '';
+			while ($route instanceof Route) {
+				$route = $this->execute($route);
 			}
-		} else {
-			$route = $this->error;
-			$this->error = '';
 		}
 
-		return $route;
+		private function execute(Route $route) {
+			$result = $route->execute($this->registry);
+
+			if ($result instanceof Route) {
+				return $result;
+			}
+
+			if ($result instanceof Exception) {
+				$route = $this->error;
+
+				$this->error = null;
+
+				return $route;
+			}
+		}
 	}
-}
 ?>
