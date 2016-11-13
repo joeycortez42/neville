@@ -1,6 +1,6 @@
 <?php
 	// Version
-	define('VERSION', 'Beta 0.7');
+	define('VERSION', 'Beta 0.7.1');
 
 	// Error Reporting
 	error_reporting(E_ALL);

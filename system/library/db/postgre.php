@@ -1,106 +1,68 @@
 <?php
-/*
-	class Database {
-		public $connection = NULL;
-		private $statement = null;
+namespace DB;
+final class Postgre {
+	private $link;
 
-		public function __construct() {
-			try {
-				$this->connection = new PDO('mysql:host=' . DB_SERVER . ';dbname=' . DB_DATABASE, DB_USERNAME, DB_PASSWORD, array(PDO::ATTR_PERSISTENT => true));
-				return $this->connection;
-			} catch (PDOException $e) {
-				die('Error: ' . $e->getMessage() . ' Error Code : ' . $e->getCode());
-			}
-
-			$this->connection->exec("SET NAMES 'utf8'");
-			$this->connection->exec("SET CHARACTER SET utf8");
-			$this->connection->exec("SET CHARACTER_SET_CONNECTION=utf8");
-			$this->connection->exec("SET SQL_MODE = ''");
+	public function __construct($hostname, $username, $password, $database, $port = '5432') {
+		if (!$this->link = pg_connect('host=' . $hostname . ' port=' . $port .  ' user=' . $username . ' password='	. $password . ' dbname=' . $database)) {
+			throw new \Exception('Error: Could not make a database link using ' . $username . '@' . $hostname);
 		}
 
-		public function prepare($sql) {
-			$this->statement = $this->connection->prepare($sql);
+		if (!pg_ping($this->link)) {
+			throw new \Exception('Error: Could not connect to database ' . $database);
 		}
 
-		public function bindParam($parameter, $variable, $data_type = PDO::PARAM_STR, $length = 0) {
-			if ($length) {
-				$this->statement->bindParam($parameter, $variable, $data_type, $length);
-			} else {
-				$this->statement->bindParam($parameter, $variable, $data_type);
-			}
-		}
+		pg_query($this->link, "SET CLIENT_ENCODING TO 'UTF8'");
+	}
 
-		public function execute() {
-			try {
-				if ($this->statement && $this->statement->execute()) {
-					$data = array();
+	public function query($sql) {
+		$resource = pg_query($this->link, $sql);
 
-					while ($row = $this->statement->fetch(PDO::FETCH_ASSOC)) {
-						$data[] = $row;
-					}
+		if ($resource) {
+			if (is_resource($resource)) {
+				$i = 0;
 
-					$result = new stdClass();
-					$result->row = (isset($data[0])) ? $data[0] : array();
-					$result->rows = $data;
-					$result->num_rows = $this->statement->rowCount();
+				$data = array();
+
+				while ($result = pg_fetch_assoc($resource)) {
+					$data[$i] = $result;
+
+					$i++;
 				}
-			} catch(PDOException $e) {
-				die('Error: ' . $e->getMessage() . ' Error Code : ' . $e->getCode());
-			}
-		}
 
-		public function query($sql, $params = array()) {
-			$this->statement = $this->connection->prepare($sql);
-			$result = false;
+				pg_free_result($resource);
 
-			try {
-				if ($this->statement && $this->statement->execute($params)) {
-					$data = array();
+				$query = new \stdClass();
+				$query->row = isset($data[0]) ? $data[0] : array();
+				$query->rows = $data;
+				$query->num_rows = $i;
 
-					while ($row = $this->statement->fetch(PDO::FETCH_ASSOC)) {
-						$data[] = $row;
-					}
+				unset($data);
 
-					$result = new stdClass();
-					$result->row = (isset($data[0]) ? $data[0] : array());
-					$result->rows = $data;
-					$result->num_rows = $this->statement->rowCount();
-				}
-			} catch (PDOException $e) {
-				die('Error: ' . $e->getMessage() . ' Error Code : ' . $e->getCode());
-				exit();
-			}
-
-			if ($result) {
-				return $result;
+				return $query;
 			} else {
-				$result = new stdClass();
-				$result->row = array();
-				$result->rows = array();
-				$result->num_rows = 0;
-				return $result;
+				return true;
 			}
-		}
-
-		public function escape($string) {
-			return $this->connection->quote(trim($string));
-		}
-
-		public function countAffected() {
-			if ($this->statement) {
-				return $this->statement->rowCount();
-			} else {
-				return 0;
-			}
-		}
-
-		public function getLastId() {
-			return $this->connection->lastInsertId();
-		}
-
-		public function __destruct() {
-			$this->connection = NULL;
+		} else {
+			throw new \Exception('Error: ' . pg_result_error($this->link) . '<br />' . $sql);
 		}
 	}
-*/
-?>
+
+	public function escape($value) {
+		return pg_escape_string($this->link, $value);
+	}
+
+	public function countAffected() {
+		return pg_affected_rows($this->link);
+	}
+
+	public function getLastId() {
+		$query = $this->query("SELECT LASTVAL() AS `id`");
+
+		return $query->row['id'];
+	}
+
+	public function __destruct() {
+		pg_close($this->link);
+	}
+}

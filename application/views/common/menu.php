@@ -15,8 +15,8 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li<?php if ($route == 'getting-started') echo $li_active;?>><a href="getting-started">Getting Started</a></li>
-				<li<?php if ($route == 'documentation') echo $li_active;?>><a href="documentation">Documentation</a></li>
-				<!--<li<?php if ($route == 'helper-classes') echo $li_active;?>><a href="helper-classes">Helper Classes</a></li>-->
+		<li<?php if ($route == 'documentation') echo $li_active;?>><a href="documentation">Documentation</a></li>
+		<!--<li<?php if ($route == 'helper-classes') echo $li_active;?>><a href="helper-classes">Helper Classes</a></li>-->
       </ul>
     </div><!--/.nav-collapse -->
   </div>
