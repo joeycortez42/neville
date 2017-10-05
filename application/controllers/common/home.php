@@ -6,7 +6,7 @@
 			}*/
 
 			$this->document->setTitle('Neville ');
-			$this->document->addStyle('css/home.css');
+			$this->document->setClass('docs-home');
 
 			$data['menu'] = $this->load->controller('common/menu');
 			$data['footer'] = $this->load->controller('common/footer');

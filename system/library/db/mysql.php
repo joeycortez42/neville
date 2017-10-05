@@ -106,6 +106,7 @@ final class MySQL {
 	}
 
 	public function __destruct() {
+		unset($this->connection);
 		$this->connection = null;
 	}
 }

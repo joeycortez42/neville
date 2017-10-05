@@ -10,7 +10,7 @@
 <?php
 	if ($scripts) {
 		foreach ($scripts as $script) { ?>
-			<script src="<?php echo $script; ?>"></script>
+<script src="<?php echo $script; ?>"></script>
 <?php
 		}
 	}

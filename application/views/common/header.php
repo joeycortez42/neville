@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-US">
 	<head>
 		<meta charset="UTF-8">
@@ -15,7 +15,7 @@
 		<link href="css/neville.css" rel="stylesheet">
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700">
 <?php if ($styles) foreach ($styles as $style) { ?>
-	<link rel="<?php echo $style['rel']; ?>" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
+		<link rel="<?php echo $style['rel']; ?>" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
 	</head>
 <body class="<?=$class;?>">

@@ -1,13 +1,13 @@
 <?php
 	// Version
-	define('VERSION', 'Beta 0.7.1');
+	define('VERSION', 'Beta 0.7.3');
 
 	// Error Reporting
 	error_reporting(E_ALL);
 	//error_reporting(E_ALL ^ E_NOTICE);
 	//ini_set('error_reporting', E_ALL ^ E_NOTICE);
 	ini_set('error_reporting', E_ALL);
-	ini_set("display_errors", 1);
+	ini_set('display_errors', 1);
 
 	// Check PHP Version
 	if (version_compare(phpversion(), '5.4.0', '<') == true) {
