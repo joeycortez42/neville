@@ -1,6 +1,6 @@
 <?php
 	// Version
-	define('VERSION', 'Beta 0.7.3');
+	define('VERSION', 'Beta 0.7.4');
 
 	// Error Reporting
 	error_reporting(E_ALL);
@@ -54,12 +54,10 @@
 		$registry->set('db', new Database(DB_TYPE, DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_DATABASE, DB_PORT));
 	}
 
-/**** In Dev ****
 	// Session
 	$session = new Session();
 	$session->start();
 	$registry->set('session', $session);
-/**** In Dev ****/
 
 	// Url
 	$url = new Url(HTTP_SERVER, HTTP_SERVER ? HTTP_SERVER : HTTP_SERVER);
@@ -68,9 +66,9 @@
 	// Document
 	$registry->set('document', new Document());
 
-/*	// Login
+	// Login
 	$registry->set('user', new User($registry));
-*/
+
 	// Front Controller
 	$controller = new Front($registry);
 
@@ -85,4 +83,24 @@
 
 	// Output
 	$response->output();
+
+/*	echo 'Session: ';
+	print_r($_SESSION);
+	echo '<br />';
+
+	echo 'Post: ';
+	print_r($_POST);
+	echo '<br />';
+
+	echo 'Get: ';
+	print_r($_GET);
+	echo '<br />';
+
+	echo 'Request: ';
+	print_r($_REQUEST);
+	echo '<br />'; */
+
+	//echo 'Server: ';
+	//print_r($_SERVER);
+	//echo '<br />';
 ?>

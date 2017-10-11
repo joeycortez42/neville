@@ -1,10 +1,10 @@
-<?=$header;?>
-<?=$menu;?>
+<?php echo $header; ?>
+<?php echo $menu; ?>
 <main class="cover-container" id="content">
 	<h1 class="cover-heading white">Neville</h1>
 	<p class="lead">A lightweight PHP5 & PHP7 MVC Framework</p>
 	<p class="more-text">Built using Apache, PHP, MySQL, Postgre and bundled with Bootstrap v3.3.7.</p>
-	<a class="btn btn-download btn-lg" href="https://github.com/nokemono42/neville/archive/master.zip">Download <?=VERSION;?></a>
+	<a class="btn btn-download btn-lg" href="https://github.com/nokemono42/neville/archive/master.zip">Download <?php echo VERSION; ?></a>
 	<div class="mastfooter">
 		<div class="social"><iframe src="http://ghbtns.com/github-btn.html?user=nokemono42&repo=neville&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="110" height="20"></iframe></div>
 		<div class="social"><iframe src="http://ghbtns.com/github-btn.html?user=nokemono42&repo=neville&type=fork&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="95" height="20"></iframe></div>
@@ -20,4 +20,4 @@
 		</div>
 	</div>
 </main>
-<?=$footer;?>
+<?php echo $footer; ?>

@@ -18,4 +18,4 @@
 		<link rel="<?php echo $style['rel']; ?>" href="<?php echo $style['href']; ?>" media="<?php echo $style['media']; ?>" />
 <?php } ?>
 	</head>
-<body class="<?=$class;?>">
+<body class="<?php echo $class; ?>">
