@@ -11,10 +11,6 @@
 
 * { font-family: 'Roboto', sans-serif; }
 
-a { color: #801005; }
-a:focus,
-a:hover { color: #750908; }
-
 .white,
 .white a,
 .white a:hover { color:#FFF; }
@@ -23,17 +19,7 @@ a:hover { color: #750908; }
 
 .navbar {
 	margin-bottom: 0;
-	background: #FFFFFF;
 	border: 0;
-}
-
-.navbar-brand,
-.navbar-brand:hover,
-.navbar-nav > li > a,
-.navbar-nav>li>a:focus,
-.navbar-nav>li>a:hover {
-	font-weight: 500;
-	color: #801005;
 }
 
 .navbar-nav>li>a:hover { background-color: #f9f9f9; }
@@ -42,45 +28,3 @@ footer {
 	margin-top: 30px;
 	text-align: center;
 }
-
-/*
- * Docs Home
- *
-*/
-.docs-home #content { text-align: center; }
-
-.cover-container {
-	padding: 40px 0 40px 0;
-	margin-right: auto;
-	margin-left: auto;
-	background: #801005;
-}
-
-.cover-heading { font-size: 5.5em; }
-
-.docs-home .lead {
-	font-size: 1.5em;
-	font-weight: 300;
-	color: #FFF;
-}
-
-.docs-home .more-text {
-	font-size: 1em;
-	color: #FFF;
-}
-
-.btn-download {
-	margin-top: 30px;
-	padding: 17px 30px;
-	color: #FFF;
-	background-color: #801005;
-	border-color: #FFF;
-}
-.btn-download:hover {
-	background-color: #FFF;
-	color: #801005;
-}
-
-.mastfooter { padding: 50px 0; }
-
-.mastfooter .social { display: inline-block; }

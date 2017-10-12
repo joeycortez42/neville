@@ -1,5 +1,5 @@
 <?php
-	function format_phone($phone) {
+	function formatPhone($phone) {
 		$phone = preg_replace("/[^0-9]/", "", $phone);
 
 		if (strlen($phone) == 7) {

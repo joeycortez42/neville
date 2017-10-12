@@ -43,6 +43,7 @@ Author
 
 To-do
 ------
+* Debug $this->request
 * Add to/Update documentation.
 * Check multi selection on select helper.
 * Check pagination library, possibly rewrite.
