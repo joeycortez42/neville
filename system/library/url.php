@@ -20,7 +20,7 @@
 				$url = $this->url;
 			}
 
-			$url .= 'index.php?route=' . $route;
+			$url .= '/' . $route;
 
 			if ($args) {
 				$url .= str_replace('&', '&amp;', '&' . ltrim($args, '&'));
