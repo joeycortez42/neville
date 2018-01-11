@@ -12,3 +12,13 @@ $("form").submit(function(e) {
         }
     });  return true;
 });
+
+function showLoading() {
+	$('#loading-overlay').show();
+	$('.loading-wrapper').show();
+}
+
+function hideLoading() {
+	$('#loading-overlay').hide();
+	$('.loading-wrapper').hide();
+}

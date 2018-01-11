@@ -1,5 +1,14 @@
 <?php
+/**
+ * Neville Controller Account Login
+ *
+ * @package		Neville
+ * @since		0.8.0
+ */
 	class ControllerAccountLogin extends Controller {
+		/**
+		 * Index
+		 */
 		public function index() {
 			if ($this->user->isLoggedIn()) {
 				$this->response->redirect($this->url->link('', '', ''));
@@ -32,4 +41,3 @@
 			$this->response->setOutput($this->load->view('account/login', $data));
 		}
 	}
-?>

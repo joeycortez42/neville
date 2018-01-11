@@ -1,15 +1,36 @@
 <?php
+/**
+ * Neville Account User
+ *
+ * @package		Neville
+ * @since		0.8.0
+ */
 	class ModelAccountUser extends Model {
-		public function getUser($user_id) {
-			$query = $this->db->query("SELECT id, email, firstname, lastname, api_key, avatar FROM users WHERE id = " . (int)$user_id);
+		/**
+		 * Retrieve user by id
+		 *
+		 * @param int
+		 *
+		 * @returns array
+		 */
+		public function getUser($userId) {
+			$query = $this->db->query("SELECT id, email, firstname, lastname, api_key, avatar FROM users WHERE id = " . (int)$userId);
 
 			return $query->row;
 		}
 
-		public function editUser($user_id, $firstname, $lastname) {
-			$query = $this->db->query("SELECT id, email, firstname, lastname, api_key, avatar FROM users WHERE id = " . (int)$user_id);
+		/**
+		 * Edit user
+		 *
+		 * @param int
+		 * @param string
+		 * @param string
+		 *
+		 * @returns array
+		 */
+		public function editUser($userId, $firstname, $lastname) {
+			$query = $this->db->query("SELECT id, email, firstname, lastname, api_key, avatar FROM users WHERE id = " . (int)$userId);
 
 			return $query->row;
 		}
 	}
-?>

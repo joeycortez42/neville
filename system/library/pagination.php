@@ -1,47 +1,60 @@
 <?php
+/**
+ * Neville Pagination Class
+ *
+ * @package		Neville
+ * @since		0.4.0
+ */
 	class Pagination {
 		public $total = 0;
 		public $page = 0;
 		public $limit = 20;
 
-		public function render() {
+		/**
+		 * Output pagination
+		 *
+		 * @returns string
+		 */
+		public function output() {
 			$total = $this->total;
 			$sortField = $this->sortField;
 			$sortOrder = $this->sortOrder;
 			$limit = $this->limit;
 			$page = $this->page;
 
-			if ($page == 0) { $page = 1; }
+			if ($page === 0) {
+				$page = 1;
+			}
 
-			$num_pages = ceil($total / $limit);
+			$numPages = ceil($total / $limit);
 
 			$output = '';
 			//$output = 'Page: ' . $page . ', Num Pages: ' . $num_pages . ', Limit: ' . $limit . ', Total: ' . $total . '<br />';
 
-			if ($num_pages > 1) {
-				$o = 0; $num_pages++;
+			if ($numPages > 1) {
+				$i = 0; $numPages++;
 				$output .= '<nav><ul class="pagination">';
 
-				for ($p=1;$p<$num_pages;$p++) {
-					if ($p == $page) {
-						$output .= '<li class="disabled"><a title="' . $p . '">' . $p . '</a></li>';
-						$o++;
-					} else if ($num_pages < 9) {
-						$output .= '<li><a title="' . $p . '">' . $p . '</a></li>';
-					} else if ($page < 5 && $p < 9) {
-						$output .= '<li><a title="' . $p . '">' . $p . '</a></li>';
-						$o++;
-					} else if ($p > 6 && $p == ($page + 4)) {
+				for ($item = 1; $item < $numPages; $item++) {
+					if ($item === $page) {
+						$output .= '<li class="disabled"><a title="' . $item . '">' . $item . '</a></li>';
+						$i++;
+					} elseif ($numPages < 9) {
+						$output .= '<li><a title="' . $item . '">' . $item . '</a></li>';
+					} elseif ($page < 5 && $item < 9) {
+						$output .= '<li><a title="' . $item . '">' . $item . '</a></li>';
+						$i++;
+					} elseif ($item > 6 && $item === ($page + 4)) {
 						$label = $page + 1; //Next
 						$output .= '<li><a title="' . $label . '">»</a></li>';
-						$o++;
-					} else if ($p == ($page - 4)) {
+						$i++;
+					} elseif ($item === ($page - 4)) {
 						$label = $page - 1; //Prev
 						$output .= '<li><a title="' . $label . '">«</a></li>';
-						$o++;
-					} else if (($p > ($page - 4) && $p < ($page + 4))) {
-						$output .= '<li><a" title="' . $p . '">' . $p . '</a></li>';
-						$o++;
+						$i++;
+					} elseif (($item > ($page - 4) && $item < ($page + 4))) {
+						$output .= '<li><a" title="' . $item . '">' . $item . '</a></li>';
+						$i++;
 					}
 				}
 
@@ -51,4 +64,3 @@
 			return $output;
 		}
 	}
-?>

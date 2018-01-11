@@ -1,5 +1,16 @@
 <?php
+/**
+ * Neville Controller Common Header
+ *
+ * @package		Neville
+ * @since		0.1.0
+ */
 	class ControllerCommonHeader extends Controller {
+		/**
+		 * Index
+		 *
+		 * @returns array
+		 */
 		public function index() {
 			$data['title'] = $this->document->getTitle();
 			$data['keywords'] = 'Neville, PHP5, MVC, Framework';
@@ -10,4 +21,3 @@
 			return $this->load->view('common/header', $data);
 		}
 	}
-?>

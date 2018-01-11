@@ -1,11 +1,30 @@
 <?php
+/**
+ * Neville Loader Class
+ *
+ * @package		Neville
+ * @since		0.1.0
+ */
 	final class Loader {
 		protected $registry;
 
+		/**
+		 * Retrieve registry for Loader Class
+		 *
+		 * @param array
+		 */
 		public function __construct($registry) {
 			$this->registry = $registry;
 		}
 
+		/**
+		 * Load controller
+		 *
+		 * @param string
+		 * @param array
+		 *
+		 * @returns string
+		 */
 		public function controller($route, $data = array()) {
 			$route = preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$route);
 			$output = null;
@@ -22,6 +41,11 @@
 			return $output;
 		}
 
+		/**
+		 * Load model
+		 *
+		 * @param string
+		 */
 		public function model($route) {
 			$route = preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$route);
 
@@ -38,6 +62,14 @@
 			}
 		}
 
+		/**
+		 * Load view
+		 *
+		 * @param string
+		 * @param array
+		 *
+		 * @returns string
+		 */
 		public function view($route, $data = array()) {
 			$output = null;
 
@@ -61,4 +93,3 @@
 			return $output;
 		}
 	}
-?>

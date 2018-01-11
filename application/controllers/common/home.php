@@ -1,5 +1,14 @@
 <?php
+/**
+ * Neville Controller Common Home
+ *
+ * @package		Neville
+ * @since		0.1.0
+ */
 	class ControllerCommonHome extends Controller {
+		/**
+		 * Index
+		 */
 		public function index() {
 			/*if (!$this->user->isLoggedIn()) {
 				$this->response->redirect($this->url->link('account/login', '', ''));
@@ -15,4 +24,3 @@
 			$this->response->setOutput($this->load->view('common/home', $data));
 		}
 	}
-?>

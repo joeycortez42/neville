@@ -1,6 +1,6 @@
 <?php
 	// Version
-	define('VERSION', 'Beta 0.7.6');
+	define('VERSION', 'Beta 0.8.0');
 
 	// Error Reporting
 	error_reporting(E_ALL);
@@ -10,14 +10,14 @@
 	ini_set('display_errors', 1);
 
 	// Check PHP Version
-	if (version_compare(phpversion(), '5.6', '<') == true) {
+	if (version_compare(phpversion(), '5.6', '<') === true) {
 		exit('<b>Error</b>: PHP 5.6+ or PHP 7+ required.');
 	}
 
-    // Autoloader
+	// Autoloader
 	if (is_file(DIR_APP . 'vendor/autoload.php')) {
-    	require_once(DIR_APP . 'vendor/autoload.php');
-    }
+		require_once(DIR_APP . 'vendor/autoload.php');
+	}
 
 	// Engine
 	foreach (glob(DIR_APP . 'system/library/*.php') as $file) {
@@ -27,12 +27,12 @@
 	// Database Adapters
 	foreach (glob(DIR_APP . 'system/library/db/*.php') as $file) {
 		require_once($file);
-    }
+	}
 
 	// Helper
 	foreach (glob(DIR_APP . 'system/helper/*.php') as $file) {
 		require_once($file);
-    }
+	}
 
 	// Registry
 	$registry = new Registry();
@@ -103,4 +103,3 @@
 	//echo 'Server: ';
 	//print_r($_SERVER);
 	//echo '<br />';
-?>
