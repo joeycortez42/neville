@@ -38,7 +38,13 @@
 		}
 
 		public function createId() {
-			return substr(bin2hex(random_bytes(26)), 0, 26);
+			if (function_exists('random_bytes')) {
+				$session_id = substr(bin2hex(random_bytes(26)), 0, 26);
+			} else {
+				$session_id = substr(bin2hex(openssl_random_pseudo_bytes(26)), 0, 26);
+			}
+
+			return $session_id;
 		}
 
 		public function destroy() {

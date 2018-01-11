@@ -1,6 +1,6 @@
 /*
  * Neville
- * Version: 0.7.5
+ * Version: 0.7.6
  * https://blossomers.com
  *
  * Copyright 2017 Blossomers Media, Inc
@@ -32,13 +32,40 @@ a:hover {
 
 a:hover { text-decoration: none; }
 
-.modal-header { margin-bottom: 15px; }
-
 .white,
 .white a,
 .white a:hover { color:#FFF; }
 
 .red { color: #801005; }
+
+.blue { color: #337ab7; }
+
+.btn {
+	font-weight: 500;
+}
+
+.btn-primary {
+	background-color: #0072B3;
+	border: 0;
+}
+
+.btn-primary:hover {
+	background-color: #00619a;
+	border-color: #00619a;
+}
+
+.btn-warning {
+	background-color: #F7621E;
+	border-color: #F7621E;
+}
+.btn-warning:hover {
+	background-color: #F05A1B;
+	border-color: #F05A1B;
+}
+
+.btn.round {
+	border-radius: 3rem;
+}
 
 .navbar {
 	margin-bottom: 0;
@@ -46,6 +73,37 @@ a:hover { text-decoration: none; }
 }
 
 .navbar-nav>li>a:hover { background-color: #f9f9f9; }
+
+.sidebar {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	width: 16%;
+	padding: 20px 0;
+	background-color: #f5f5f5;
+	border-right: 1px solid #eee;
+}
+
+/*
+main {
+	position: absolute;
+	top: 0;
+	width: 84%;
+	margin-left: 16%;
+	padding-left: 35px;
+	padding-right: 35px;
+}
+*/
+
+.modal-header {
+	margin-bottom: 15px;
+	padding: 0 0 10px 0;
+}
+
+.modal-title { font-weight: 400; }
+
+.modal-body { padding: 15px 15px 10px 15px; }
 
 footer {
 	margin-top: 30px;
