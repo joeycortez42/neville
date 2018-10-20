@@ -1,17 +1,28 @@
 <?php echo $header; ?>
-<form class="form-login" class="container" method="post">
-	<h2 class="clock-welcome text-center">Welcome to</h2>
-	<div class="col-md-4 col-md-offset-4">
+<div id="login">
 <?php
 	if ($error) {
-		echo '<div class="alert alert-danger" role="alert">' . $error . '</div>';
+		echo '<div class="alert alert-danger" role="alert"><strong>ERROR</strong>: ' . $error . '</div>';
 	}
 ?>
-		<label for="inputEmail" class="sr-only">Email address</label>
-		<input type="email" id="email" name="email" class="form-control" placeholder="Email address" required="">
-		<label for="inputPassword" class="sr-only">Password</label>
-		<input type="password" id="password" name="password" class="form-control" placeholder="Password" required="">
-		<button class="btn btn-lg btn-primary btn-block" type="submit">Log in</button>
-	</div>
-</form>
+	<form class="form-login" class="container" method="post">
+		<div class="form-group">
+			<label for="inputEmail">Email Address</label>
+			<input type="email" id="email" name="email" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label for="inputPassword">Password</label>
+			<input type="password" id="password" name="password" class="form-control" />
+		</div>
+		<div class="pull-left">
+			<label for="rememberme">
+				<input type="checkbox" id="rememberme" name="rememberme" value="forever" /> Remember Me
+			</label>
+		</div>
+		<button type="submit" class="btn btn-primary pull-right">Log in</button>
+	</form>
+	<p id="nav">
+		<a href="<?php echo HTTP_SERVER; ?>/account/login?action=lostpassword">Lost your password?</a>
+	</p>
+</div>
 <?php echo $footer; ?>

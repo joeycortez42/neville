@@ -1,4 +1,4 @@
-[Neville Beta v.0.7.6](http://neville.blossomers.com)
+[Neville Beta v.0.8.1](http://neville.blossomers.com)
 ====================
 
 Neville is a lightweight PHP7 MVC Framework for building web applications.
@@ -8,7 +8,7 @@ Get started at http://neville.blossomers.com
 Built Using
 -----------
 * Apache 2.2.31
-* PHP 7.1.13
+* PHP 7.2.1
 * MySQL 5.6.35
 * Postgre 9.5.5
 

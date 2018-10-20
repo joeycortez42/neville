@@ -1,6 +1,6 @@
 /*
  * Neville
- * Version: 0.8.0
+ * Version: 0.8.1
  * https://blossomers.com
  *
  * Copyright 2017 Blossomers Media, Inc
@@ -40,10 +40,6 @@ a:hover { text-decoration: none; }
 
 .blue { color: #337ab7; }
 
-.btn {
-	font-weight: 500;
-}
-
 .btn-primary {
 	background-color: #0072B3;
 	border: 0;
@@ -70,9 +66,31 @@ a:hover { text-decoration: none; }
 .navbar {
 	margin-bottom: 0;
 	border: 0;
+	-webkit-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
 .navbar-nav>li>a:hover { background-color: #f9f9f9; }
+
+
+.form-control {
+	border: 1px solid #ddd;
+}
+
+.alert {
+	padding: 12px;
+	border-radius: 0;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
+	border-left: 4px solid #00a0d2;
+}
+
+.alert-danger {
+	color: #444;
+	background-color: #ffffff;
+	border-color: #ffffff;
+	border-left-color: #dc3232;
+}
 
 .sidebar {
 	position: fixed;
@@ -108,4 +126,76 @@ main {
 footer {
 	margin-top: 30px;
 	text-align: center;
+}
+
+/*--------------------------------------------------------------
+# Login
+--------------------------------------------------------------*/
+body.login {
+	background: #f1f1f1;
+	height: 100%
+}
+
+#login {
+	width: 320px;
+	padding: 6% 0 0;
+	margin: auto
+}
+
+.login h1 {
+	margin: 0;
+	padding: 0;
+}
+
+.login form, .login h1 a {
+    overflow: hidden;
+    font-weight: 400;
+}
+
+.login h1 a {
+	background-image: url(../images/logo.png);
+	background-image: none, url(../images/logo.png);
+	background-size: 200px;
+	background-position: center top;
+	background-repeat: no-repeat;
+	height: 200px;
+	width: 200px;
+	color: #444;
+	font-size: 20px;
+	line-height: 1.3em;
+	margin: 0 auto 50px;
+	padding: 0;
+	text-indent: -9999px;
+	outline: 0;
+	display: block;
+}
+
+.login form {
+	margin-top: 20px;
+	margin-left: 0;
+	padding: 26px 24px 46px;
+	background: #fff;
+	box-shadow: 0 1px 3px rgba(0, 0, 0, .13)
+}
+
+.login label {
+    color: #72777c;
+    font-weight: 400;
+    margin-bottom: 3px;
+}
+
+.login input[type=email],
+.login input[type=password] {
+	background: #fbfbfb;
+}
+
+.login #nav {
+    font-size: 13px;
+    padding: 0 24px;
+    margin: 24px 0 0;
+}
+
+.login #nav a {
+    text-decoration: none;
+    color: #555d66;
 }

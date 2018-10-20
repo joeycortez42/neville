@@ -1,6 +1,3 @@
-<?php
-	$li_active = ' class="active"';
-?>
 <nav class="navbar navbar-static-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -14,9 +11,9 @@
 		</div><!--/.nav-header -->
 		<div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-				<li<?php if ($route == 'getting-started') echo $li_active; ?>><a href="getting-started">Getting started</a></li>
-				<li<?php if ($route == 'documentation') echo $li_active; ?>><a href="documentation">Documentation</a></li>
-				<!--<li<?php if ($route == 'helper-classes') echo $li_active;?>><a href="helper-classes">Helper Classes</a></li>-->
+				<li class="<?php if ($route == 'getting-started') { echo 'active'; } ?>"><a href="getting-started">Getting started</a></li>
+				<li class="<?php if ($route == 'documentation') { echo 'active'; } ?>"><a href="documentation">Documentation</a></li>
+				<!--<li class="<?php if ($route == 'helper-classes') { echo 'active'; } ?>"><a href="helper-classes">Helper Classes</a></li>-->
 			</ul>
 		</div><!--/.nav-collapse -->
 	</div><!--/.container -->

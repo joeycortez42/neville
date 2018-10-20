@@ -12,24 +12,24 @@
  *
  * @returns string
  */
-	function curl($url, $port = 80) {
-		$cookie = '/tmp/cookie.txt';
+function curl($url, $port = 80) {
+	$cookie = '/tmp/cookie.txt';
 
-		$ch = curl_init();
-		curl_setopt($ch, CURLOPT_URL, $url);
-		curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
-		curl_setopt($ch, CURLOPT_COOKIESESSION, TRUE);
-		curl_setopt($ch, CURLOPT_COOKIEFILE, $cookie);
-		curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie);
-		curl_setopt($ch, CURLOPT_PORT, $port);
+	$curl = curl_init();
+	curl_setopt($curl, CURLOPT_URL, $url);
+	curl_setopt($curl, CURLOPT_RETURNTRANSFER, TRUE);
+	curl_setopt($curl, CURLOPT_COOKIESESSION, TRUE);
+	curl_setopt($curl, CURLOPT_COOKIEFILE, $cookie);
+	curl_setopt($curl, CURLOPT_COOKIEJAR, $cookie);
+	curl_setopt($curl, CURLOPT_PORT, $port);
 
-		$output = curl_exec($ch);
+	$response = curl_exec($curl);
 
-		if (curl_exec($ch) === false) {
-			throw new \Exception('Curl error: ' . curl_error($ch));
-		}
-
-		curl_close($ch);
-
-		return $output;
+	if (curl_exec($curl) === false) {
+		throw new \Exception('Curl error: ' . curl_error($curl) . ' - ' . curl_error($curl));
 	}
+
+	curl_close($curl);
+
+	return $response;
+}
