@@ -1,16 +1,39 @@
 <?php
 namespace Database;
+/**
+ * Neville SQLite Class
+ *
+ * @package		Neville
+ * @since		0.8.1
+ */
 final class SQLite3 {
-    private $connection = null;
-
+	private $connection = null;
+	
+	/**
+	 * Retrieve connection values for SQLite Class
+	 *
+	 * @param string
+	 *
+	 * @throws string
+	 */
     public function __construct($hostname) {        
         try {
 			$this->connection = new \PDO("sqlite:" . $hostname);
 		} catch(\PDOException $e) {
 			throw new \Exception('Failed to connect to database. Reason: \'' . $e->getMessage() . '\'');
 		}
-    }
-
+	}
+	
+	/**
+	 * Query statement
+	 *
+	 * @param string
+	 * @param array
+	 *
+	 * @throws string
+	 *
+	 * @returns array
+	 */
 	public function query($sql, $params = array()) {
 		$this->statement = $this->connection->prepare($sql);
 
@@ -44,6 +67,9 @@ final class SQLite3 {
 		}
 	}
 
+	/**
+	 * Closes database connection
+	 */
     public function __destruct() {
         unset($this->connection);
 		$this->connection = null;
