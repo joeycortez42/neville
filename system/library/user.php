@@ -8,6 +8,9 @@
 class User {
 	private $userId;
 	private $email;
+	private $db;
+	private $request;
+	private $session;
 
 	/**
 	 * Retrieve registry values for User Class
