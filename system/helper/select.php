@@ -35,7 +35,7 @@ function fillSelect($id, $name, $class, $style, $array, $default = 'Select', $ac
 		foreach ($array as $key => $value) {
 			if ($active !== '') {
 				if ($single === true) {
-					if ($value == $active) {
+					if ($key == $active) {
 						$selected = ' selected';
 					} else {
 						$selected = '';
@@ -52,7 +52,7 @@ function fillSelect($id, $name, $class, $style, $array, $default = 'Select', $ac
 			}
 
 			if ($single === true) {
-				$key = $value;
+				//$key = $value;
 			}
 
 			$html .= '<option value="' . $key . '"' . $selected . '>' . $value . '</option>';

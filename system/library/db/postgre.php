@@ -1,35 +1,32 @@
 <?php
-namespace Database;
 /**
  * Neville Postgre Class
  *
  * @package		Neville
  * @since		0.4.4
  */
+namespace Database;
 final class Postgre {
-	private $link;
+	private $connection;
+	private $affected_rows;
 
 	/**
-	 * Retrieve connection values for Postgre Class
+	 * Constructor
 	 *
-	 * @param string
-	 * @param string
-	 * @param string
-	 * @param string
-	 * @param int
-	 *
-	 * @throws string
+	 * @param	string	$hostname
+	 * @param	string	$username
+	 * @param	string	$password
+	 * @param	string	$database
+	 * @param	int		$port
 	 */
 	public function __construct($hostname, $username, $password, $database, $port = '5432') {
-		if (!$this->link = pg_connect('host=' . $hostname . ' port=' . $port .  ' user=' . $username . ' password='	. $password . ' dbname=' . $database)) {
+		$this->connection = @pg_connect('host=' . $hostname . ' port=' . $port .  ' user=' . $username . ' password='	. $password . ' dbname=' . $database);
+
+		if (!$this->connection) {
 			throw new \Exception('Error: Could not make a database link using ' . $username . '@' . $hostname);
 		}
 
-		if (!pg_ping($this->link)) {
-			throw new \Exception('Error: Could not connect to database ' . $database);
-		}
-
-		pg_query($this->link, "SET CLIENT_ENCODING TO 'UTF8'");
+		pg_query($this->connection, "SET CLIENT_ENCODING TO 'UTF8'");
 	}
 
 	/**
@@ -42,9 +39,11 @@ final class Postgre {
 	 * @returns array/bool
 	 */
 	public function query($sql) {
-		$resource = pg_query($this->link, $sql);
+		$resource = pg_query($this->connection, $sql);
 
 		if ($resource) {
+			pg_affected_rows($resource);
+
 			if (is_resource($resource)) {
 				$i = 0;
 
@@ -70,45 +69,58 @@ final class Postgre {
 				return true;
 			}
 		} else {
-			throw new \Exception('Error: ' . pg_result_error($this->link) . '<br />' . $sql);
+			throw new \Exception('Error: ' . pg_result_error($this->connection) . '<br />' . $sql);
 		}
 	}
 
 	/**
 	 * Escape values
 	 *
-	 * @param string
+	 * @param	string	$value
 	 *
-	 * @returns string
+	 * @return	string
 	 */
 	public function escape($value) {
-		return pg_escape_string($this->link, $value);
+		return pg_escape_string($this->connection, $value);
 	}
 
 	/**
 	 * Count of affected rows
 	 *
-	 * @returns int
+	 * @return	int
 	 */
 	public function countAffected() {
-		return pg_affected_rows($this->link);
+		return $this->affected_rows;
 	}
 
 	/**
 	 * Last row id
 	 *
-	 * @returns int
+	 * @return	int
 	 */
 	public function getLastId() {
-		$query = $this->query("SELECT LASTVAL() AS `id`");
+		$query = $this->query("SELECT LASTVAL() AS id");
 
 		return $query->row['id'];
+	}
+
+	/**
+	 * Check database connection
+	 *
+	 * @return	bool
+	 */
+	public function isConnected() {
+		if (pg_connection_status($this->connection) === PGSQL_CONNECTION_OK) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	/**
 	 * Closes database connection
 	 */
 	public function __destruct() {
-		pg_close($this->link);
+		pg_close($this->connection);
 	}
 }

@@ -1,4 +1,4 @@
-Options +FollowSymlinks
+Options +SymLinksIfOwnerMatch
 Options -Indexes
 
 <FilesMatch "(?i)((\.tpl|\.ini|\.log|(?<!robots)\.txt))">

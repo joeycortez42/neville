@@ -1,32 +1,30 @@
 <?php
-namespace Database;
 /**
  * Neville MySQL Class
  *
  * @package		Neville
  * @since		0.4.4
  */
+namespace Database;
 final class MySQL {
-	private $connection = null;
-	private $statement = null;
+	private $connection;
+	private $statement;
 
 	/**
-	 * Retrieve connection values for MySQL PDO Class
+	 * Constructor
 	 *
-	 * @param string
-	 * @param string
-	 * @param string
-	 * @param string
-	 * @param int
-	 *
-	 * @throws string
+	 * @param	string	$hostname
+	 * @param	string	$username
+	 * @param	string	$password
+	 * @param	string	$database
+	 * @param	int		$port
 	 */
 	public function __construct($hostname, $username, $password, $database, $port = '3306') {
 		try {
-			$this->connection = new \PDO("mysql:host=" . $hostname . ";port=" . $port . ";dbname=" . $database,
+			$this->connection = @new \PDO("mysql:host=" . $hostname . ";port=" . $port . ";dbname=" . $database,
 				$username, $password, array(\PDO::ATTR_PERSISTENT => true));
 		} catch (\PDOException $e) {
-			throw new \Exception('Failed to connect to database. Reason: ' . $e->getMessage());
+			throw new \Exception('Error: Could not make a database link using ' . $username . '@' . $hostname . '!');
 		}
 
 		$this->connection->exec("SET NAMES 'utf8'");
@@ -36,34 +34,7 @@ final class MySQL {
 	}
 
 	/**
-	 * Prepare SQL statement
-	 *
-	 * @param string
-	 */
-	public function prepare($sql) {
-		$this->statement = $this->connection->prepare($sql);
-	}
-
-	/**
-	 * Bind SQL statement
-	 *
-	 * @param string
-	 * @param string
-	 * @param string
-	 * @param int
-	 */
-	public function bindParam($parameter, $variable, $dataType = \PDO::PARAM_STR, $length = 0) {
-		if ($length) {
-			$this->statement->bindParam($parameter, $variable, $dataType, $length);
-		} else {
-			$this->statement->bindParam($parameter, $variable, $dataType);
-		}
-	}
-
-	/**
 	 * Execute SQL statement
-	 *
-	 * @throws string
 	 */
 	public function execute() {
 		try {
@@ -87,12 +58,10 @@ final class MySQL {
 	/**
 	 * Query statement
 	 *
-	 * @param string
-	 * @param array
+	 * @param	string	$sql
+	 * @param	array	$params
 	 *
-	 * @throws string
-	 *
-	 * @returns array
+	 * @return	array
 	 */
 	public function query($sql, $params = array()) {
 		$this->statement = $this->connection->prepare($sql);
@@ -123,16 +92,42 @@ final class MySQL {
 			$result->row = array();
 			$result->rows = array();
 			$result->num_rows = 0;
+
 			return $result;
+		}
+	}
+
+	/**
+	 * Prepare SQL statement
+	 *
+	 * @param	string	$sql
+	 */
+	public function prepare($sql) {
+		$this->statement = $this->connection->prepare($sql);
+	}
+
+	/**
+	 * Bind SQL statement
+	 *
+	 * @param	string	$parameter
+	 * @param	string	$variable
+	 * @param	string	$data_type
+	 * @param	int		$length
+	 */
+	public function bindParam($parameter, $variable, $data_type = \PDO::PARAM_STR, $length = 0) {
+		if ($length) {
+			$this->statement->bindParam($parameter, $variable, $data_type, $length);
+		} else {
+			$this->statement->bindParam($parameter, $variable, $data_type);
 		}
 	}
 
 	/**
 	 * Escape values
 	 *
-	 * @param string
+	 * @param	string	$value
 	 *
-	 * @returns string
+	 * @return	string
 	 */
 	public function escape($value) {
 		return str_replace(array("\\", "\0", "\n", "\r", "\x1a", "'", '"'), array("\\\\", "\\0", "\\n", "\\r", "\Z", "\'", '\"'), $value);
@@ -141,7 +136,7 @@ final class MySQL {
 	/**
 	 * Count of affected rows
 	 *
-	 * @returns int
+	 * @return	int
 	 */
 	public function countAffected() {
 		if ($this->statement) {
@@ -154,7 +149,7 @@ final class MySQL {
 	/**
 	 * Last row id
 	 *
-	 * @returns int
+	 * @return	int
 	 */
 	public function getLastId() {
 		return $this->connection->lastInsertId();
@@ -163,7 +158,7 @@ final class MySQL {
 	/**
 	 * Check database connection
 	 *
-	 * @returns bool
+	 * @return	bool
 	 */
 	public function isConnected() {
 		if ($this->connection) {
@@ -177,7 +172,6 @@ final class MySQL {
 	 * Closes database connection
 	 */
 	public function __destruct() {
-		unset($this->connection);
 		$this->connection = null;
 	}
 }

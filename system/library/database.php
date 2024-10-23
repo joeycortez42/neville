@@ -9,16 +9,14 @@ class Database {
 	private $adapter;
 
 	/**
-	 * Retrieve values for Database Class
+	 * Constructor
 	 *
-	 * @param string
-	 * @param string
-	 * @param string
-	 * @param string
-	 * @param string
-	 * @param int
-	 *
-	 * @throws string
+	 * @param	string	$adapter
+	 * @param	string	$hostname
+	 * @param	string	$username
+	 * @param	string	$password
+	 * @param	string	$database
+	 * @param	int		$port
 	 */
 	public function __construct($adapter, $hostname, $username, $password, $database, $port = NULL) {
 		$class = 'Database\\' . $adapter;
@@ -33,21 +31,20 @@ class Database {
 	/**
 	 * Query statement
 	 *
-	 * @param string
-	 * @param array
+	 * @param	string	$sql
 	 *
-	 * @returns array
+	 * @return	array
 	 */
-	public function query($sql, $params = array()) {
-		return $this->adapter->query($sql, $params);
+	public function query($sql) {
+		return $this->adapter->query($sql);
 	}
 
 	/**
 	 * Escape values
 	 *
-	 * @param string
+	 * @param	string	$value
 	 *
-	 * @returns string
+	 * @return	string
 	 */
 	public function escape($value) {
 		return $this->adapter->escape($value);
@@ -56,16 +53,16 @@ class Database {
 	/**
 	 * Count of affected rows
 	 *
-	 * @returns int
+	 * @return	int
 	 */
 	public function countAffected() {
 		return $this->adapter->countAffected();
 	}
 
 	/**
-	 * Last row id
+	 * Get last row id
 	 *
-	 * @returns int
+	 * @return	int
 	 */
 	public function getLastId() {
 		return $this->adapter->getLastId();
@@ -74,9 +71,9 @@ class Database {
 	/**
 	 * Check adapter connection
 	 *
-	 * @returns bool
+	 * @return	bool
 	 */
 	public function connected() {
-		return $this->adapter->connected();
+		return $this->adapter->isConnected();
 	}
 }

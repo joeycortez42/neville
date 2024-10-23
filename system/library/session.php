@@ -6,11 +6,11 @@
  * @since		0.1.0
  */
 class Session {
-	public $sessionId = '';
+	protected $session_id = '';
 	public $data = array();
 
 	/**
-	 * Set values for Session Class and start PHP session
+	 * Constructor
 	 */
 	public function __construct() {
 		ini_set('session.use_only_cookies', 'Off');
@@ -19,59 +19,46 @@ class Session {
 		ini_set('session.cookie_httponly', 'On');
 
 		session_set_cookie_params(0, '/');
-		session_start();
-	}
-
-	/**
-	 * Start session
-	 *
-	 * @param string
-	 *
-	 * @returns string
-	 */
-	public function start($key = SESSION_NAME) {
-		if (isset($_COOKIE[$key])) {
-			$this->sessionId = $_COOKIE[$key];
-		} else {
-			$this->sessionId = $this->_createId();
-		}
-
-		if (!isset($_SESSION[$this->sessionId])) {
-			$_SESSION[$this->sessionId] = array();
-		}
-
-		$this->data = &$_SESSION[$this->sessionId];
-
-		if ($key !== 'PHPSESSID') {
-			setcookie($key, $this->sessionId, ini_get('session.cookie_lifetime'), ini_get('session.cookie_path'),
-				ini_get('session.cookie_domain'), ini_get('session.cookie_secure'), ini_get('session.cookie_httponly'));
-		}
-
-		return $this->sessionId;
 	}
 
 	/**
 	 * Retrieve session id
 	 *
-	 * @returns string
+	 * @return	string
 	 */
 	public function getId() {
-		return $this->sessionId;
+		return $this->session_id;
 	}
 
 	/**
-	 * Create session id
+	 * Start session
 	 *
-	 * @returns string
+	 * @param	string	$session_id
+	 *
+	 * @return	string
 	 */
-	private function _createId() {
-		if (function_exists('random_bytes')) {
-			$sessionId = substr(bin2hex(random_bytes(26)), 0, 26);
-		} else {
-			$sessionId = substr(bin2hex(openssl_random_pseudo_bytes(26)), 0, 26);
+	public function start($session_id = '') {
+		if (!$session_id) {
+			if (function_exists('random_bytes')) {
+				$session_id = substr(bin2hex(random_bytes(26)), 0, 26);
+			} else {
+				$session_id = substr(bin2hex(openssl_random_pseudo_bytes(26)), 0, 26);
+			}
 		}
 
-		return $sessionId;
+		if (preg_match('/^[a-zA-Z0-9,\-]{22,52}$/', $session_id)) {
+			$this->session_id = $session_id;
+		} else {
+			throw new \Exception('Error: Invalid session ID!');
+			exit();
+		}
+
+		setcookie(SESSION_NAME, $session_id, time()+(60*60*24*30), ini_get('session.cookie_path'),
+			ini_get('session.cookie_domain'), ini_get('session.cookie_secure'), TRUE);
+
+		session_start();
+
+		return $session_id;
 	}
 
 	/**

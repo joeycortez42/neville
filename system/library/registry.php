@@ -9,11 +9,11 @@ final class Registry {
 	private $data = array();
 
 	/**
-	 * Retrieve values
+	 * Get values
 	 *
-	 * @param string
+	 * @param	string	$key
 	 *
-	 * @returns array/null
+	 * @return	mixed
 	 */
 	public function get($key) {
 		return (isset($this->data[$key]) ? $this->data[$key] : NULL);
@@ -22,8 +22,8 @@ final class Registry {
 	/**
 	 * Set values
 	 *
-	 * @param string
-	 * @param string
+	 * @param	string	$key
+	 * @param	string	$value
 	 */
 	public function set($key, $value) {
 		$this->data[$key] = $value;
@@ -32,9 +32,9 @@ final class Registry {
 	/**
 	 * Check values
 	 *
-	 * @param string
+	 * @param	string	$key
 	 *
-	 * @returns bool
+	 * @return	bool
 	 */
 	public function has($key) {
 		return isset($this->data[$key]);

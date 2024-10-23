@@ -15,7 +15,10 @@ class ControllerCommonHome extends Controller {
 		}*/
 
 		$this->document->setTitle('Neville ');
-		$this->document->setClass('docs-home');
+		$this->document->setClass('docs-home text-center');
+
+		$this->document->addStyle('css/neville.css');
+		$this->document->addStyle('css/home.css');
 
 		$data['menu'] = $this->load->controller('common/menu');
 		$data['footer'] = $this->load->controller('common/footer');

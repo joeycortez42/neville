@@ -11,25 +11,33 @@ class Route {
 	private $method = 'index';
 
 	/**
-	 * Retrieve route for Route Class
+	 * Constructor
 	 *
-	 * @param string
+	 * @param	string	$route
 	 */
 	public function __construct($route) {
 		$this->id = $route;
 
-		$file = DIR_APP . 'application/controllers/' . $route . '.php';
+		$parts = explode('/', preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$route));
 
-		if (is_file($file)) {
-			$this->route = $route;
+		// Break apart the route
+		while ($parts) {
+			$file = DIR_APP . 'application/controllers/' . implode('/', $parts) . '.php';
+
+			if (is_file($file)) {
+				$this->route = implode('/', $parts);
+
+				break;
+			} else {
+				$this->method = array_pop($parts);
+			}
 		}
-
 	}
 
 	/**
-	 * Retrieve route
+	 * Get route id
 	 *
-	 * @returns string
+	 * @return	string
 	 */
 	public function getId() {
 		return $this->id;
@@ -38,15 +46,21 @@ class Route {
 	/**
 	 * Execute routing
 	 *
-	 * @param array
-	 * @param array
+	 * @param	object	$registry
+	 * @param	array	$args
 	 *
-	 * @returns array
+	 * @return	array
 	 */
 	public function execute($registry, array $args = array()) {
+		// Stop any magical methods being called
+		if (substr($this->method, 0, 2) == '__') {
+			return new \Exception('Error: Calls to magic methods are not allowed!');
+		}
+		
 		$file = DIR_APP . 'application/controllers/' . $this->route . '.php';
 		$class = 'Controller' . preg_replace('/[^a-zA-Z0-9]/', '', $this->route);
 
+		// Initialize the class
 		if (is_file($file)) {
 			include_once($file);
 

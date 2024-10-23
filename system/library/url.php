@@ -7,58 +7,48 @@
  */
 class Url {
 	private $url;
-	private $ssl;
 	private $rewrite = array();
 
 	/**
-	 * Retrieve values for URL Class
+	 * Constructor
 	 *
-	 * @param string
-	 * @param string
+	 * @param	string	$url
 	 */
-	public function __construct($url, $ssl = '') {
+	public function __construct($url) {
 		$this->url = $url;
-		$this->ssl = $ssl;
 	}
 
 	/**
-	 * Assign URL for processing
+	 * Add URL for processing
 	 *
-	 * @param string
+	 * @param string	$rewrite
 	 */
-	public function addRewrite($rewrite) {
-		$this->rewrite[] = $rewrite;
-	}
+	// public function addRewrite($rewrite) {
+	// 	$this->rewrite[] = $rewrite;
+	// }
 
 	/**
 	 * Retrieve values for URL Class
 	 *
-	 * @param string
-	 * @param string
-	 * @param bool
+	 * @param	string	$route
+	 * @param	string	$args
 	 *
-	 * @returns string
+	 * @return	string
 	 */
-	public function link($route, $args = '', $secure = false) {
-		if ($this->ssl && $secure) {
-			$url = $this->ssl;
-		} else {
-			$url = $this->url;
-		}
-
-		$url .= '/' . $route;
+	public function link($route, $args = '') {
+		$url = $this->url . 'index.php?route=' . (string)$route;
 
 		if ($args) {
 			if (is_array($args)) {
-				$url .= '&amp;' . http_build_query($args);
+				$url .= '&amp;' . http_build_query($args, '', '&amp;');
 			} else {
 				$url .= str_replace('&', '&amp;', '&' . ltrim($args, '&'));
 			}
 		}
 
-		foreach ($this->rewrite as $rewrite) {
-			$url = $rewrite->rewrite($url);
-		}
+		// foreach ($this->rewrite as $rewrite) {
+		// 	$url = $rewrite->rewrite($url);
+		// }
 
 		return $url;
 	}

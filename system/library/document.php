@@ -17,16 +17,16 @@ class Document {
 	/**
 	 * Set page title
 	 *
-	 * @param string
+	 * @param	string	$title
 	 */
 	public function setTitle($title) {
 		$this->title = $title;
 	}
 
 	/**
-	 * Retrieve page title
+	 * Get page title
 	 *
-	 * @returns string
+	 * @return	string
 	 */
 	public function getTitle() {
 		return $this->title;
@@ -35,16 +35,16 @@ class Document {
 	/**
 	 * Set page description
 	 *
-	 * @param string
+	 * @param	string	$description
 	 */
 	public function setDescription($description) {
 		$this->description = $description;
 	}
 
 	/**
-	 * Retrieve page description
+	 * Get page description
 	 *
-	 * @returns string
+	 * @return	string
 	 */
 	public function getDescription() {
 		return $this->description;
@@ -53,16 +53,16 @@ class Document {
 	/**
 	 * Set page keywords
 	 *
-	 * @param string
+	 * @param	string	$keywords
 	 */
 	public function setKeywords($keywords) {
 		$this->keywords = $keywords;
 	}
 
 	/**
-	 * Retrieve page keywords
+	 * Get page keywords
 	 *
-	 * @returns string
+	 * @return	string
 	 */
 	public function getKeywords() {
 		return $this->keywords;
@@ -71,21 +71,27 @@ class Document {
 	/**
 	 * Set body class
 	 *
-	 * @param string
+	 * @param	string	$class
 	 */
 	public function setClass($class) {
 		$this->class = $class;
 	}
 
 	/**
-	 * Retrieve body class
+	 * Get body class
 	 *
-	 * @returns string
+	 * @return	string
 	 */
 	public function getClass() {
 		return $this->class;
 	}
 
+	/**
+	 * Add link to links
+	 *
+	 * @param	string	$href
+	 * @param	string	$rel
+	 */
 	public function addLink($href, $rel) {
 		$this->links[$href] = array(
 			'href' => $href,
@@ -93,16 +99,21 @@ class Document {
 		);
 	}
 
+	/**
+	 * Get links
+	 *
+	 * @return	array
+	 */
 	public function getLinks() {
 		return $this->links;
 	}
 
 	/**
-	 * Set stylesheets
+	 * Add stylesheet to stylesheets
 	 *
-	 * @param string
-	 * @param string
-	 * @param string
+	 * @param	string	$href
+	 * @param	string	$rel
+	 * @param	string	$media
 	 */
 	public function addStyle($href, $rel = 'stylesheet', $media = 'screen') {
 		$this->styles[$href] = array(
@@ -113,30 +124,30 @@ class Document {
 	}
 
 	/**
-	 * Retrieve stylesheets
+	 * Get stylesheets
 	 *
-	 * @returns array
+	 * @return	array
 	 */
 	public function getStyles() {
 		return $this->styles;
 	}
 
 	/**
-	 * Set javascript
+	 * Add script to scripts
 	 *
-	 * @param string
-	 * @param string
+	 * @param	string	$href
+	 * @param	string	$postion
 	 */
 	public function addScript($href, $postion = 'header') {
 		$this->scripts[$postion][$href] = $href;
 	}
 
 	/**
-	 * Retrieve javascripts
+	 * Get scripts
 	 *
-	 * @param string
+	 * @param	string	$postion
 	 *
-	 * @returns array
+	 * @return	array
 	 */
 	public function getScripts($postion = 'header') {
 		if (isset($this->scripts[$postion])) {

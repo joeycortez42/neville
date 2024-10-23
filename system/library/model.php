@@ -11,7 +11,7 @@ abstract class Model {
 	/**
 	 * Load registry for Model Class
 	 *
-	 * @param array
+	 * @param	array	$registry
 	 */
 	public function __construct($registry) {
 		$this->registry = $registry;
@@ -20,9 +20,9 @@ abstract class Model {
 	/**
 	 * Retrieve value
 	 *
-	 * @param string
+	 * @param	string	$key
 	 *
-	 * @returns string
+	 * @return	mixed
 	 */
 	public function __get($key) {
 		return $this->registry->get($key);
@@ -31,8 +31,8 @@ abstract class Model {
 	/**
 	 * Set value
 	 *
-	 * @param string
-	 * @param string
+	 * @param	string	$key
+	 * @param	string	$value
 	 */
 	public function __set($key, $value) {
 		$this->registry->set($key, $value);

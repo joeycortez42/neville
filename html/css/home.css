@@ -1,0 +1,91 @@
+html,
+body { height: 100%; }
+body {
+	/*text-align: center;*/
+	background: #801005;
+}
+
+.bg-primary {
+	background-color: #FFF !important;
+}
+
+.navbar-brand {
+	font-weight: 600;
+	color: #801005 !important;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+	font-weight: 500;
+	color: #801005 !important;
+}
+
+/*
+.cover-container {
+	/*margin-right: auto;
+	margin-left: auto;*
+	background: #801005;
+}
+/*
+.cover-heading { font-size: 5.5em; }
+*/
+.lead {
+	font-size: 1.5em;
+	font-weight: 300;
+	color: #FFF;
+}
+
+.more-text {
+	font-size: 1em;
+	color: #FFF;
+}
+
+/*
+.btn-download {
+	margin: 30px 0;
+	padding: 17px 30px;
+	color: #FFF;
+	background-color: #801005;
+	border-color: #FFF;
+}
+
+.btn-download:hover {
+	color: #801005;
+	background-color: #FFF;
+	font-weight: 500;
+}
+*/
+
+footer,
+footer a {
+	color: #FFF;
+}
+footer a:hover {
+	color: #EEEEEE;
+	text-decoration: underline;
+}
+
+@media (min-width: 768px) {
+	footer {
+		position: fixed;
+		bottom: 0;
+		width: 100%;
+	}
+}
+
+/** Bootstrap Overrides
+.navbar {
+	margin-bottom: 0;
+	background: #FFFFFF;
+	border: 0;
+}
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-nav > li > a,
+.navbar-default .navbar-nav>li>a:focus,
+.navbar-default .navbar-nav>li>a:hover {
+	font-weight: 400;
+	color: #801005;
+}
+.navbar-default .navbar-brand,
+.navbar-default .navbar-brand:hover { font-weight: 500; }
+ **/

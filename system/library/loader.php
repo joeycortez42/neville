@@ -9,9 +9,9 @@ final class Loader {
 	protected $registry;
 
 	/**
-	 * Retrieve registry for Loader Class
+	 * Constructor
 	 *
-	 * @param array
+	 * @param	object	$registry
 	 */
 	public function __construct($registry) {
 		$this->registry = $registry;
@@ -20,75 +20,73 @@ final class Loader {
 	/**
 	 * Load controller
 	 *
-	 * @param string
-	 * @param array
+	 * @param	string	$route
 	 *
-	 * @returns string
+	 * @return	mixed
 	 */
-	public function controller($route, $data = array()) {
+	public function controller($route) {
+		$args = func_get_args();
+		array_shift($args);
+
+		// Sanitize the call
 		$route = preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$route);
-		$output = null;
 
-		if (!$output) {
-			$final = new Route($route);
-			$output = $final->execute($this->registry, array(&$data));
+		$action = new Route($route);
+		$output = $action->execute($this->registry, $args);
+
+		if (!$output instanceof Exception) {
+			return $output;
 		}
-
-		if ($output instanceof Exception) {
-			return false;
-		}
-
-		return $output;
 	}
 
 	/**
 	 * Load model
 	 *
-	 * @param string
+	 * @param	string	$route
 	 */
 	public function model($route) {
+		// Sanitize the call
 		$route = preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$route);
 
-		$file  = DIR_APP . 'application/models/' . $route . '.php';
-		$class = 'Model' . preg_replace('/[^a-zA-Z0-9]/', '', $route);
+		if (!$this->registry->has('model_' . str_replace('/', '_', $route))) {
+			$file = DIR_APP . 'application/models/' . $route . '.php';
+			$class = 'Model' . preg_replace('/[^a-zA-Z0-9]/', '', $route);
 
-		if (file_exists($file)) {
-			include_once($file);
+			if (is_file($file)) {
+				include_once($file);
 
-			$this->registry->set('model_' . str_replace('/', '_', $route), new $class($this->registry));
-		} else {
-			trigger_error('Error: Could not load model ' . $route . '!');
-			exit();
+				$this->registry->set('model_' . str_replace('/', '_', $route), new $class($this->registry));
+			} else {
+				throw new \Exception('Error: Could not load model ' . $route . '!');
+			}
 		}
 	}
 
 	/**
 	 * Load view
 	 *
-	 * @param string
-	 * @param array
+	 * @param	string	$route
+	 * @param	array	$data
 	 *
-	 * @returns string
+	 * @return	mixed
 	 */
 	public function view($route, $data = array()) {
+		// Sanitize the call
 		$route = preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$route);
-		$output = null;
+		
+		$file = DIR_APP . 'application/views/' . $route . '.php';
 
-		if (!$output) {
-			$file = DIR_APP . 'application/views/' . $route . '.php';
+		if (is_file($file)) {
+			ob_start();
 
-			if (file_exists($file)) {
-				extract($data);
-				ob_start();
+			extract($data);
+			include_once($file);
+			$output = ob_get_contents();
 
-				require($file);
-				$output = ob_get_contents();
-
-				ob_end_clean();
-			} else {
-				trigger_error('Error: Could not load view ' . $route . '!');
-				exit();
-			}
+			ob_end_clean();
+		} else {
+			throw new \Exception('Error: Could not load view ' . $route . '!');
+			exit();
 		}
 
 		return $output;

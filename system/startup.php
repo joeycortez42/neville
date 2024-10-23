@@ -1,13 +1,13 @@
 <?php
 // Version
-define('VERSION', 'Beta 0.8.2');
+define('VERSION', 'Beta 0.8.3');
 
 // Error Reporting
 error_reporting(E_ALL);
 
 // Check PHP Version
-if (version_compare(phpversion(), '5.6', '<') === true) {
-	exit('<b>Error</b>: PHP 5.6+ or PHP 7+ required.');
+if (version_compare(phpversion(), '7.0.0', '<')) {
+	exit('<b>Error</b>: PHP7+ required.');
 }
 
 // Autoloader
@@ -43,6 +43,7 @@ $registry->set('request', new Request());
 // Response
 $response = new Response();
 $response->addHeader('Content-Type: text/html; charset=UTF-8');
+$response->setCompression(HTTP_COMPRESSION);
 $registry->set('response', $response);
 
 // Database
@@ -52,12 +53,11 @@ if (DB_AUTOSTART) {
 
 // Session
 $session = new Session();
-$session->start();
 $registry->set('session', $session);
+$session->start();
 
 // Url
-$url = new Url(HTTP_SERVER, HTTP_SERVER ? HTTP_SERVER : HTTP_SERVER);
-$registry->set('url', $url);
+$registry->set('url', new Url(HTTP_SERVER, HTTP_SERVER ? HTTP_SERVER : HTTP_SERVER));
 
 // Document
 $registry->set('document', new Document());
@@ -68,8 +68,8 @@ $registry->set('user', new User($registry));
 // Front Controller
 $controller = new Front($registry);
 
-if (isset($_GET['route'])) {
-	$route = new Route($_GET['route']);
+if (isset($registry->get('request')->get['route'])) {
+	$route = new Route($registry->get('request')->get['route']);
 } else {
 	$route = new Route(ROUTE_DEFAULT);
 }

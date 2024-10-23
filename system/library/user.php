@@ -76,7 +76,7 @@ class User {
 	/**
 	 * Check if user is logged in
 	 *
-	 * @returns int
+	 * @return	int
 	 */
 	public function isLoggedIn() {
 		return $this->userId;

@@ -1,38 +1,35 @@
 <?php
-namespace Database;
 /**
  * Neville SQLite Class
  *
  * @package		Neville
  * @since		0.8.1
  */
+namespace Database;
 final class SQLite3 {
-	private $connection = null;
-	
+	private $connection;
+	private $statement;
+
 	/**
-	 * Retrieve connection values for SQLite Class
+	 * Constructor
 	 *
-	 * @param string
-	 *
-	 * @throws string
+	 * @param	string	$hostname
 	 */
-    public function __construct($hostname) {        
-        try {
-			$this->connection = new \PDO("sqlite:" . $hostname);
-		} catch(\PDOException $e) {
-			throw new \Exception('Failed to connect to database. Reason: \'' . $e->getMessage() . '\'');
+		public function __construct($hostname) {
+			try {
+				$this->connection = @new \PDO("sqlite:" . $hostname, null, null, array(\PDO::ATTR_PERSISTENT => true));
+			} catch(\PDOException $e) {
+				throw new \Exception('Failed to connect to database. Reason: \'' . $e->getMessage() . '\'');
+			}
 		}
-	}
-	
+
 	/**
 	 * Query statement
 	 *
-	 * @param string
-	 * @param array
+	 * @param	string	$sql
+	 * @param	array	$params
 	 *
-	 * @throws string
-	 *
-	 * @returns array
+	 * @return	array
 	 */
 	public function query($sql, $params = array()) {
 		$this->statement = $this->connection->prepare($sql);
@@ -68,10 +65,63 @@ final class SQLite3 {
 	}
 
 	/**
+	 * Prepare SQL statement
+	 *
+	 * @param	string	$sql
+	 */
+	public function prepare($sql) {
+		$this->statement = $this->connection->prepare($sql);
+	}
+
+	/**
+	 * Escape values
+	 *
+	 * @param	string	$value
+	 *
+	 * @return	string
+	 */
+	public function escape($value) {
+		return str_replace(array("\\", "\0", "\n", "\r", "\x1a", "'", '"'), array("\\\\", "\\0", "\\n", "\\r", "\Z", "\'", '\"'), $value);
+	}
+
+	/**
+	 * Count of affected rows
+	 *
+	 * @return	int
+	 */
+	public function countAffected() {
+		if ($this->statement) {
+			return $this->statement->rowCount();
+		} else {
+			return 0;
+		}
+	}
+
+	/**
+	 * Last row id
+	 *
+	 * @return	int
+	 */
+	public function getLastId() {
+		return $this->connection->lastInsertId();
+	}
+
+	/**
+	 * Check database connection
+	 *
+	 * @return	bool
+	 */
+	public function isConnected() {
+		if ($this->connection) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	/**
 	 * Closes database connection
 	 */
-    public function __destruct() {
-        unset($this->connection);
+	public function __destruct() {
 		$this->connection = null;
 	}
 }

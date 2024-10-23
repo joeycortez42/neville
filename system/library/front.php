@@ -10,9 +10,9 @@ final class Front {
 	protected $error;
 
 	/**
-	 * Retrieve registry for Front Class
+	 * Constructor
 	 *
-	 * @param array
+	 * @param	object	$registry
 	 */
 	public function __construct($registry) {
 		$this->registry = $registry;
@@ -21,25 +21,25 @@ final class Front {
 	/**
 	 * Dispatch route
 	 *
-	 * @param string
-	 * @param string
+	 * @param	object	$route
+	 * @param	object	$error
 	 */
 	public function dispatch(Route $route, Route $error) {
 		$this->error = $error;
 
 		while ($route instanceof Route) {
-			$route = $this->_execute($route);
+			$route = $this->execute($route);
 		}
 	}
 
 	/**
 	 * Execute route
 	 *
-	 * @param string
+	 * @param	object	$route
 	 *
-	 * @retunrs string
+	 * @return	object
 	 */
-	private function _execute(Route $route) {
+	private function execute(Route $route) {
 		$result = $route->execute($this->registry);
 
 		if ($result instanceof Route) {

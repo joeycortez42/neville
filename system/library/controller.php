@@ -9,20 +9,20 @@ abstract class Controller {
 	protected $registry;
 
 	/**
-	 * Load registry for Controller Class
+	 * Constructor
 	 *
-	 * @param array
+	 * @param	array	$registry
 	 */
 	public function __construct($registry) {
 		$this->registry = $registry;
 	}
 
 	/**
-	 * Retrieve value
+	 * Get value
 	 *
-	 * @param string
+	 * @param	string	$key
 	 *
-	 * @returns string
+	 * @return	mixed
 	 */
 	public function __get($key) {
 		return $this->registry->get($key);
@@ -31,8 +31,8 @@ abstract class Controller {
 	/**
 	 * Set value
 	 *
-	 * @param string
-	 * @param string
+	 * @param	string	$key
+	 * @param	string	$value
 	 */
 	public function __set($key, $value) {
 		$this->registry->set($key, $value);

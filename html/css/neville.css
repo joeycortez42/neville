@@ -7,13 +7,13 @@
  * Licensed under the Apache License v2.0
  * http://www.apache.org/licenses/LICENSE-2.0
  *
-*/
+*
 
 * { font-family: 'Roboto', sans-serif; }
 
 /*--------------------------------------------------------------
 # Normalize
---------------------------------------------------------------*/
+--------------------------------------------------------------*
 html {
 	font-family: sans-serif;
 	font-size: 16px;
@@ -71,7 +71,7 @@ a:hover { text-decoration: none; }
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.1);
 }
 
-.navbar-nav>li>a:hover { background-color: #f9f9f9; }
+.navbar-nav>li>a:hover { background-color: #fff4f4; }
 
 
 .form-control {
@@ -112,7 +112,7 @@ main {
 	padding-left: 35px;
 	padding-right: 35px;
 }
-*/
+*
 
 .modal-header {
 	margin-bottom: 15px;
@@ -130,7 +130,7 @@ footer {
 
 /*--------------------------------------------------------------
 # Login
---------------------------------------------------------------*/
+--------------------------------------------------------------*
 body.login {
 	background: #f1f1f1;
 	height: 100%
@@ -199,3 +199,10 @@ body.login {
     text-decoration: none;
     color: #555d66;
 }
+
+/** Bootstrap Override
+.navbar { background: #801005; }
+.navbar a {
+	font-weight: 500;
+	color: #FFF;
+} **/
